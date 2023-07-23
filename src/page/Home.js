@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../css/home.css'; // CSS 
+import '../css/home.css'; // CSS
 import logo from '../image/logo.png';
 import map1 from '../image/1.png';
 import map2 from '../image/2.png';
@@ -9,61 +9,73 @@ import map5 from '../image/5.png';
 
 const YourComponent = () => {
   const [imagePositions, setImagePositions] = useState({
-    image1: { top: '300px', left: '400px', width: '350px', height: '350px' },
-    image2: { top: '0px', left: '370px' , width: '350px', height: '350px'},
-    image3: { top: '400px', left: '800px', width: '350px', height: '350px'},
-    image4: { top: '550px', left: '100px' , width: '350px', height: '350px'},
-    image5: { top: '700px', left: '500px', width: '350px', height: '350px'}
+    image1: { width: '280px', height: '280px' },
+    image2: {width: '280px', height: '280px'},
+    image3: { width: '280px', height: '260px'},
+    image4: { width: '250px', height: '250px'},
+    image5: { wwidth: '280px', height: '150px'},
   });
 
-  const handlePositionChange = (imageId, top, left, width, height) => {
-    setImagePositions(prevPositions => ({
+  const handlePositionChange = (imageId,) => {
+    setImagePositions((prevPositions) => ({
       ...prevPositions,
-      [imageId]: { top, left }
+    
     }));
   };
 
   return (
     <div className="image-container">
-      <div
-        onClick={() => handlePositionChange('image3', '400px', '800px', '350px', '350px')}
-        className="image-button"
-        style={{ ...imagePositions.image3, gridArea: 'image3' }}
+        <div className='leftthree'>
+      <div //경기도
+        onClick={() => handlePositionChange('image3')}
+        className="image3"
+        style={{ ...imagePositions.image3 ,marginLeft:'50px'}}
       >
         <img src={map3} alt="Image 3" className="image" />
       </div>
+      <hr style={{width:'310px', marginRight:'0px',}}></hr>
 
-      <div
-        onClick={() => handlePositionChange('image5', '700px', '500px', '350px', '350px')}
-        className="image-button"
-        style={{ ...imagePositions.image5, gridArea: 'image5' }}
+      <div //충청도
+        onClick={() => handlePositionChange('image5')}
+        className="image5"
+        style={{ ...imagePositions.image5 ,marginTop:'0px',marginLeft:'80px'}}
       >
-        <img src={map5} alt="Image 5" className="image" />
+        <img src={map5} alt="Image 5" className="image"  />
       </div>
-
+      <hr style={{width:'300px', marginRight:'0px'}}></hr>
       <div
-        onClick={() => handlePositionChange('image4', '550px', '100px', '350px', '350px')}
-        className="image-button"
-        style={{ ...imagePositions.image4, gridArea: 'image4' }}
+        onClick={() => handlePositionChange('image4')}
+        className="image4"
+        style={{ ...imagePositions.image4 ,marginLeft:'90px',marginTop:'0px' }}
       >
         <img src={map4} alt="Image 4" className="image" />
       </div>
 
+
+      </div>
+    <div className='vertical' style={{backgroundColor:'gray',width:'1px' }} ></div>
+    <div className='righttwo'>
       <div
-        onClick={() => handlePositionChange('image2', '0px', '370px', '350px', '350px')}
-        className="image-button"
-        style={{ ...imagePositions.image2, gridArea: 'image2' }}
+        onClick={() => handlePositionChange('image2')}
+        className="image2"
+        style={{ ...imagePositions.image2 ,marginLeft:'0px'}}
       >
         <img src={map2} alt="Image 2" className="image" />
       </div>
 
+      <hr style={{width:'300px', marginRight:'0px'}}></hr>
+
       <div
-        onClick={() => handlePositionChange('image1', '300px', '400px', '350px', '350px')}
-        className="image-button"
-        style={{ ...imagePositions.image1, gridArea: 'image1' }}
+        onClick={() => handlePositionChange('image1')}
+        className="image1"
+        style={{ ...imagePositions.image1 }}
       >
         <img src={map1} alt="Image 1" className="image" />
       </div>
+
+
+      </div>
+
 
     </div>
   );
@@ -71,22 +83,14 @@ const YourComponent = () => {
 
 const Home = () => {
   return (
-  <div className="home-page">
-    <div className="home-container">
-      <div className="left-half">
-        <YourComponent />
-      </div>
-      <div className="right-half">
-        <div className="drawline">
-          <div className="sky-line"></div>
-          <div className="home-container">
-            <img src={logo} alt="Logo" className="home-logo" />
-            <p className="text">한동네</p>
-          </div>
+    <div className="home-background">
+      <div className="home-body">
+        <div className="left-half">
+          <YourComponent />
         </div>
+        {/* Rest of the content in right-half */}
       </div>
     </div>
-  </div>
   );
 };
 
