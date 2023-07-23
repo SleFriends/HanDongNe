@@ -1,0 +1,82 @@
+/* body {
+  background-color: #1E90FF;
+} */
+
+.login-page{
+  background-color: #1E90FF;
+}
+
+.logo {
+    max-width: 150px; /* 필요한 크기로 조정 */
+    max-height: 80px; /* 필요한 크기로 조정 */
+    margin: 10px 3px;
+    }
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 28vh;
+}
+
+.textboxloc {
+  justify-content: center;
+  align-items: center;
+  height: 15vh; /* 원하는 높이 값으로 조정 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* styles.css */
+.writeloc {
+  justify-content: center;
+  align-items: center;
+  height: 18vh;
+  display: flex;
+  margin: 3px;
+  flex-direction: column;
+}
+
+.writeloc h1 {
+  color: white;
+  margin: 0px;
+  font-size: 40px;
+}
+
+.writeloc p {
+  color: white;
+  margin: 0px;
+  font-size: 18px;
+}
+
+.writeloc hr {
+  width: 100%;
+  height: 5px;
+  background-color: white;
+  border: none;
+  margin: 3px ;
+}
+
+.textbox {
+  padding: 15px;
+  background-color: white;
+  margin-bottom: 10px;
+  width: 250px; /* 원하는 가로 길이로 조정 */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  padding: 10px 20px;
+  border: 2px solid white; /* 흰색 선으로 테두리 설정 */
+  border-radius: 20px;
+  background-color: #1E90FF;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+}

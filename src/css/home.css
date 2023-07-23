@@ -1,0 +1,112 @@
+/* body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+  } */
+  
+  .home-page{
+    background-color: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  .home-container {
+    display: flex;
+    background-color: white;
+  }
+  
+  .left-half {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  
+  .right-half {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  
+  .drawline hr {
+    width: 100%;
+    height: 20px;
+    background-color: #1E90FF;
+    border: none;
+    margin: 3px;
+  }
+  
+  .logo {
+    max-width: 80px;
+    max-height: 80px;
+    margin-right: 10px; /* 로고와 글씨 사이의 간격을 조정 */
+  }
+  
+  .text {
+    color: #1E90FF;
+    font-size: 18px;
+  }
+
+  .sky-line {
+    width: 100%;
+    height: 15px;
+    background-color: #1E90FF;
+    margin: 100px; /* 상단 마진을 0으로 조정 */
+    border: none;
+    }
+
+    .button {
+        display: inline-block;
+        background-color: #1E90FF;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+        text-decoration: none;
+        margin-top: 20px;
+      }
+      
+      .image-container {
+        position: relative;
+        text-align: center;
+      }
+      
+      .image-container img {
+        max-width: 100%;
+        height: auto;
+      }
+      
+      .image-container .button {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .image-container {
+        display: grid;
+        grid-template-areas:
+          'image3 image3 image5'
+          'image3 image3 image5';
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        margin: 0 auto;
+        max-width: 1000px;
+      }
+      
+      .image-button {
+        position: relative;
+      }
+      
+      .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      .image-button:nth-child(1) {
+        grid-area: image3;
+      }
+      
+      .image-button:nth-child(2) {
+        grid-area: image5;
+      }
+      
