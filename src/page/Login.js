@@ -43,8 +43,8 @@ function App() {
       </div>
 
       <div className="button-container">
-        <button className="button">로그인</button>
-        <button className="button">회원가입</button>
+        <button className="login-button">로그인</button>
+        <button className="login-button">회원가입</button>
       </div>
     </div>
    

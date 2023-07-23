@@ -2,14 +2,14 @@
     margin: 0px;
    
 } */
-header{
+.register-header{
     background-color: #1E90FF;
     width: 100%;
     height:120px;
     display: flex;
     align-items: center;
 }
-.logo{
+.register-logo{
     width: 100px;
     height: 100px;
     margin-top: 5px;

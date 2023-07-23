@@ -17,7 +17,7 @@ const Myposts = () => {
         <div className="middleboxmyposts">
           <div className="smallbox">
             <div className="dividetext">
-              <div className="text">후기 표시</div>
+              <div className="register-text">후기 표시</div>
               <div className="buttonflex">
                 <button type="submit" className="fix">
                   수정하기
@@ -31,7 +31,7 @@ const Myposts = () => {
 
           <div className="smallbox">
             <div className="dividetext">
-              <div className="text">후기 표시</div>
+              <div className="register-text">후기 표시</div>
               <div className="buttonflex">
                 <button type="submit" className="fix">
                   수정하기

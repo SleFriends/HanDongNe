@@ -116,11 +116,11 @@ img.pic{
     display:flex;
     align-items: center;
 }
-.text{
+.review-text{
     margin-left: 20px;
     font-size: 30px;
 }
-textarea{
+.review-textarea{
     width: 95%;
     height : 80px;
     margin-left: 20px;

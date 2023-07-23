@@ -80,7 +80,7 @@ const Home = () => {
         <div className="drawline">
           <div className="sky-line"></div>
           <div className="home-container">
-            <img src={logo} alt="Logo" className="logo" />
+            <img src={logo} alt="Logo" className="home-logo" />
             <p className="text">한동네</p>
           </div>
         </div>

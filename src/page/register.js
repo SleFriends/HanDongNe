@@ -27,8 +27,8 @@ const Register = () => {
 
   return (
     <div>
-      <header>
-        <img src={logo2} className="logo" alt="Logo" />
+      <header className='register-header'>
+        <img src={logo2} className="register-logo" alt="Logo" />
         <div className="name">한동네</div>
       </header>
       <div className="dividecolor">

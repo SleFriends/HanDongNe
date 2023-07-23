@@ -1,8 +1,8 @@
 import '../css/Review.css'; // Make sure the CSS file path is correct
 import { Link } from 'react-router-dom';
 import React, { useState } from "react";
-import logo from '../image/logo.png';
 import logo2 from '../image/logo2.png';
+
 function Review() {
 
   const [reviews, setReviews] = useState([]);
@@ -39,6 +39,7 @@ function Review() {
           <div class='smallbox'>
             <form onSubmit={handleSubmit}> 
               <textarea
+                className='review-textarea'
                 value={reviewText}
                 onChange={handleReviewChange}
                 placeholder="게시물을 작성해주세요."
