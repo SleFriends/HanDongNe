@@ -1,8 +1,17 @@
+body{
+    padding-top:130px;
+}
 .surveys-heads{
     background-color: white;
     display:flex;
-    align-items: content;
+    align-items: center;
     height: 130px;
+    position :fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
 }
 .surveys-logo{
     width: 130px;
@@ -24,9 +33,8 @@
     font-size: 50px;
     padding-top: 30px;
 }
-/* body{
-    margin:0px;
-} */
+
+/*
 .surveys-background{
     margin-left: 0px;
     background-color: #1E90FF;
@@ -35,9 +43,41 @@
     display:inline-block;
 
     
-}
+}*/
+.surveys-background {
+    background-color: #1E90FF;
+    position: fixed;
+    top: 130px; /* 헤더의 높이만큼 아래로 이동 */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto; /* 콘텐츠를 스크롤 가능하도록 만듦 */
+   /* padding-bottom: 150px; /* 아래에 150px 공간 추가 */
+
+  }
+  /* 다음 스타일을 추가하여 콘텐츠가 고정된 헤더와 겹치지 않도록 합니다. */
+@media screen and (max-width: 600px) {
+    .surveys-heads {
+      flex-direction: column;
+      height: auto;
+      align-items: center;
+    }
+  
+    .surveys-logo {
+      margin-bottom: 20px;
+    }
+  
+    .surveys-name,
+    .surveys {
+      margin-left: 0;
+      text-align: center;
+    }
+  }
+
+
 .surveys-smallbox{
-    margin-left: 300px;
+    margin-left: 400px;
+    
     margin-top: 50px;
     width:780px;
     height:120px;
@@ -54,11 +94,38 @@
     margin-left: 60px;
 }
 .option{
-    background-color: gray;
-    width: 100px;
+    background-color: white;
+    width: 160px;
     height: 30px;
     margin-top: 0px;
     margin-left: 60px;
     padding-left: 10px;
     padding-top: 5px;
+}
+.back-matching{
+    padding-top: 100px;
+    width: 100%;
+    height:80px;
+    display: flex;
+    
+}
+.backs{
+    padding-top: 7px;
+    margin-left: 30px;
+    padding-bottom: 10px;
+    width: 100px;
+    height: 50px;
+    border-radius: 30px;
+    font-weight: bolder;
+    font-size: 22px;
+}
+.matching{
+    padding-top: 10px;
+    margin-left: 520px;
+    padding-bottom: 10px;
+    width: 280px;
+    height: 50px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 22px;
 }
