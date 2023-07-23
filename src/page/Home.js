@@ -26,56 +26,56 @@ const YourComponent = () => {
   return (
     <div className="image-container">
         <div className='leftthree'>
-      <div //경기도
-        onClick={() => handlePositionChange('image3')}
-        className="image3"
-        style={{ ...imagePositions.image3 ,marginLeft:'50px'}}
-      >
-        <img src={map3} alt="Image 3" className="image" />
-      </div>
-      <hr style={{width:'310px', marginRight:'0px',}}></hr>
+          <div //경기도
+            onClick={() => handlePositionChange('image3')}
+            className="image3"
+            style={{ ...imagePositions.image3 ,marginLeft:'50px'}}
+          >
+            <img src={map3} alt="Image 3" className="image" />
+          </div>
 
-      <div //충청도
-        onClick={() => handlePositionChange('image5')}
-        className="image5"
-        style={{ ...imagePositions.image5 ,marginTop:'0px',marginLeft:'80px'}}
-      >
-        <img src={map5} alt="Image 5" className="image"  />
-      </div>
-      <hr style={{width:'300px', marginRight:'0px'}}></hr>
-      <div
-        onClick={() => handlePositionChange('image4')}
-        className="image4"
-        style={{ ...imagePositions.image4 ,marginLeft:'90px',marginTop:'0px' }}
-      >
-        <img src={map4} alt="Image 4" className="image" />
-      </div>
+          <hr style={{width:'310px', marginRight:'0px',}}></hr>
 
+          <div //충청도
+            onClick={() => handlePositionChange('image5')}
+            className="image5"
+            style={{ ...imagePositions.image5 ,marginTop:'0px',marginLeft:'80px'}}
+          >
+            <img src={map5} alt="Image 5" className="image"  />
+          </div>
 
-      </div>
-    <div className='vertical' style={{backgroundColor:'gray',width:'1px' }} ></div>
-    <div className='righttwo'>
-      <div
-        onClick={() => handlePositionChange('image2')}
-        className="image2"
-        style={{ ...imagePositions.image2 ,marginLeft:'0px'}}
-      >
-        <img src={map2} alt="Image 2" className="image" />
-      </div>
+          <hr style={{width:'300px', marginRight:'0px'}}></hr>
+      
+          <div
+            onClick={() => handlePositionChange('image4')}
+            className="image4"
+            style={{ ...imagePositions.image4 ,marginLeft:'90px',marginTop:'0px' }}
+          >
+            <img src={map4} alt="Image 4" className="image" />
+          </div>
+        </div>
 
-      <hr style={{width:'300px', marginRight:'0px'}}></hr>
+        <div className='vertical' style={{backgroundColor:'gray',width:'1px' }} ></div>
 
-      <div
-        onClick={() => handlePositionChange('image1')}
-        className="image1"
-        style={{ ...imagePositions.image1 }}
-      >
-        <img src={map1} alt="Image 1" className="image" />
-      </div>
+        <div className='righttwo'>
+          <div
+            onClick={() => handlePositionChange('image2')}
+            className="image2"
+            style={{ ...imagePositions.image2 ,marginLeft:'0px'}}
+          >
+            <img src={map2} alt="Image 2" className="image" />
+          </div>
 
+          <hr style={{width:'300px', marginRight:'0px'}}></hr>
 
-      </div>
-
+          <div
+            onClick={() => handlePositionChange('image1')}
+            className="image1"
+            style={{ ...imagePositions.image1 }}
+          >
+            <img src={map1} alt="Image 1" className="image" />
+          </div>
+        </div>
 
     </div>
   );
@@ -88,7 +88,27 @@ const Home = () => {
         <div className="left-half">
           <YourComponent />
         </div>
-        {/* Rest of the content in right-half */}
+        <div className='right-half'>
+          <div className='rightmiddle'>
+            <div className='firstline'></div>
+            <div className='logocontain'>
+              <img src={logo} alt="logo" className="bluelogo"  /> 
+              <div className='texts'>
+                한동네
+              </div>
+            </div>
+            <div className='secondline'></div>
+            <button type="submit" class='mypage'>
+              마이페이지
+            </button>
+            <button type="submit" class='surveyNmatching'>
+              설문조사 & 매칭
+            </button>
+            <button type="submit" class='surveydashboard'>
+              후기 게시판
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
