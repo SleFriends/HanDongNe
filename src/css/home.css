@@ -1,66 +1,140 @@
-/* homes.css */
+
 
 .home-background {
-  width: max-content;
-  height: max-content;
-  background-color: white;
-  margin: 0px;
-}
+    width: max-content;
+    height: max-content;
+    background-color: white;
+    margin: 0px;
+  }
+  
+  .home-body {
+    margin-top: 60px;
+    background-color: white;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+  }
+  
+  .left-half {
+    background-color: white;
+    width: 50vw;
+    height: 88vh;
+    display: grid;
+    place-items: center;
+  }
+  
+  .image-container {
+    display: flex;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, max-content);
+    gap: 10px;
+  }
+  
+  .image1 {
+    cursor: pointer;
+    width: 280px;
+  }
+  .image2 {
+    cursor: pointer;
+    width: 280px;
+  }
+  .image3 {
+    cursor: pointer;
+    width: 280px;
+  }
+  .image4 {
+    cursor: pointer;
+    width: 280px;
+  }
+  .image5 {
+    cursor: pointer;
+    width: 280px;
+    height:200px;
+  }
+  
+  /* Add more styles as needed for individual images */
+  .image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .leftthree{
+    display: inline;
+  }
+  .righttwo{
+    display: inline;
+    margin-left: 0px;
+  }
+  .right-half{
+    
+    width: 50vw;
+    height: 88vh;
+    display: grid;
+    place-items: center;
+  }
+  .rightmiddle{
+    width: 90%;
+    background-color: white;
+    height: 90%;
 
-.home-body {
-  margin-top: 100px;
-  background-color: white;
-  width: 100vw;
-  height: 100%;
-  display: flex;
-}
+  }
+  .firstline{
+    background-color: #1E90FF;
+    width: 100%;
+    height: 4px;
+  }
+  .logocontain{
+    width: 60%;
+    height: 100px;
+    display: flex;
+  }
+  .bluelogo{
+    width: 90%;
+    height: 140%;
+    margin-left: 38%;
+    margin-top: 3%;
+    
+  }
+  .texts{
+    width: 90%;
+    height: 140%;
+    color: #1E90FF;
+    font-size: 20px;
+    padding-left: 10%;
+    padding-top: 20%;
+    font-weight: bolder;
+    font-style:oblique
+  }
+  .secondline{
+    background-color: #1E90FF;
+    width: 100%;
+    height: 4px;
+    margin-top: 10%;
+  }
+  .mypage{
+    background-color: #00AAFF;
+    margin-top: 5%;
+    width: 88%;
+    height: 20%;
+    margin-left: 6%;
+    border-radius: 20px;
+    border-color: #00AAFF;
+  }
+  .surveyNmatching{
+    background-color: #89CFF0;
+    margin-top: 5%;
+    width: 88%;
+    height: 20%;
+    margin-left: 6%;
+    border-radius: 20px;
+    border-color: #89CFF0;
+  }
+  .surveydashboard{
+    background-color: #87CEFA;
+    margin-top: 5%;
+    width: 88%;
+    height: 20%;
+    margin-left: 6%;
+    border-radius: 20px;
+    border-color: #87CEFA;
+  }
 
-.left-half {
-  background-color: white;
-  width: 50vw;
-  height: 88vh;
-  display: grid;
-  place-items: center;
-}
-
-.image-container {
-  display: flex;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(5, max-content);
-  gap: 10px;
-}
-
-.image1 {
-  cursor: pointer;
-  width: 280px;
-}
-.image2 {
-  cursor: pointer;
-  width: 280px;
-}
-.image3 {
-  cursor: pointer;
-  width: 280px;
-}
-.image4 {
-  cursor: pointer;
-  width: 280px;
-}
-.image5 {
-  cursor: pointer;
-  width: 280px;
-  height:200px;
-}
-
-/* Add more styles as needed for individual images */
-.image {
-  max-width: 100%;
-  max-height: 100%;
-}
-.leftthree{
-  display: inline;
-}
-.righttwo{
-  display: inline;
-  margin-left: 0px;
-}
