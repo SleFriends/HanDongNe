@@ -2,8 +2,6 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import '../css/Review.css';
 const Myposts = () => {
-  
-
   return (
     <div className="backgroundmyposts">
       <div className="heads">
