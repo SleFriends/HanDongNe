@@ -9,7 +9,7 @@ const MyPage = () => {
   };
   return (
     <div className="mypage-container">
-      <div>마이페이지</div>
+      <h>마이페이지</h>
       <div className="rectangle">
         <div className="user-info">
           <h2>내정보</h2>
@@ -42,7 +42,7 @@ const MyPage = () => {
           </div>
         </div>
         <img src={bannerImage} alt="Banner" onClick={handleImageClick} />
-      </div>
+      </div>    
       <button className="back-button">뒤로가기</button>
     </div>
   );

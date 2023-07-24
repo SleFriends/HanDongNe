@@ -32,14 +32,14 @@
     height: 500px;
     background-color: white;
     margin-top: 70px;
-    margin-left: -90px;
+    margin-left: -50px;
     margin-right: 50px;
     display: flex; 
   
   }
 
   .mypage-container > div:first-child {
-    margin-left: -100px;
+    margin-left: 0px;
   }
 
   .rectangle img {
@@ -131,3 +131,5 @@
     /* 마우스 호버 시 배경색 변경 */
     background-color: #979fa6;
   }
+
+  
