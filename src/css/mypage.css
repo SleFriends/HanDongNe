@@ -1,4 +1,6 @@
-.mypage-container {
+/* mypage.css */
+
+  .container {
     width: 100vw;
     height: 600px;
     background-color: #1E90FF;
@@ -32,15 +34,14 @@
     height: 500px;
     background-color: white;
     margin-top: 70px;
-    margin-left: -50px;
-    margin-right: 50px;
+    /* margin-left: w; */
     display: flex; 
   
   }
 
-  .mypage-container > div:first-child {
-    margin-left: 0px;
-  }
+  /* .container > div:first-child {
+    margin-left: 5vw;
+  } */
 
   .rectangle img {
     text-align: center;
@@ -118,7 +119,7 @@
     margin-left: 20vw;
   }
 
-  .save-button-container .save-button {
+  .save-button-container  .save-button {
     /* 버튼 스타일링 */
     padding: 5px 15px;
     font-size: 15px;
@@ -131,5 +132,3 @@
     /* 마우스 호버 시 배경색 변경 */
     background-color: #979fa6;
   }
-
-  
