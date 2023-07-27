@@ -1,99 +1,80 @@
-/* body{
-    padding-top:130px;
-} */
-.surveys-heads{
+/* survey.css */
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .survey-container {
+    /* Set a min-height to fill the screen on TVs */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .surveys-heads {
     background-color: white;
-    display:flex;
+    display: flex;
     align-items: center;
     height: 130px;
-    position :fixed;
-    top:0;
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
     z-index: 1;
-
-}
-.surveys-logo{
+  }
+  
+  .surveys-logo {
     width: 130px;
     height: 130px;
-}
-.surveys-name{
-    width:200px;
-    color: #1E90FF;
+  }
+  
+  .surveys-name {
+    width: 200px;
+    color: #1e90ff;
     font-size: 50px;
-    font-weight:bolder;
+    font-weight: bolder;
     margin-left: 30px;
     font-weight: 500;
     padding-top: 30px;
-}
-.surveys{
-    color: #1E90FF;
-
+  }
+  
+  .surveys {
+    color: #1e90ff;
     margin-left: 250px;
     font-size: 50px;
     padding-top: 30px;
-}
-
-/*
-.surveys-background{
-    margin-left: 0px;
-    background-color: #1E90FF;
-    width: 100vw;
-    height: 110vh;
-    display:inline-block;
-
-    
-}*/
-.surveys-background {
-    background-color: #1E90FF;
+  }
+  
+  .surveys-background {
+    background-color: #1e90ff;
     position: fixed;
-    top: 130px; /* 헤더의 높이만큼 아래로 이동 */
+    top: 130px;
     left: 0;
     right: 0;
     bottom: 0;
-    overflow-y: auto; /* 콘텐츠를 스크롤 가능하도록 만듦 */
-   /* padding-bottom: 150px; /* 아래에 150px 공간 추가 */
-
+    overflow-y: auto;
   }
-  /* 다음 스타일을 추가하여 콘텐츠가 고정된 헤더와 겹치지 않도록 합니다. */
-@media screen and (max-width: 600px) {
-    .surveys-heads {
-      flex-direction: column;
-      height: auto;
-      align-items: center;
-    }
   
-    .surveys-logo {
-      margin-bottom: 20px;
-    }
-  
-    .surveys-name,
-    .surveys {
-      margin-left: 0;
-      text-align: center;
-    }
-  }
-
-
-.surveys-smallbox{
+  .surveys-smallbox {
     margin-left: 400px;
-    
     margin-top: 50px;
-    width:780px;
-    height:120px;
+    width: 780px;
+    height: 120px;
     background-color: white;
     border-radius: 30px;
-    display:inline-block;
-}
-.question{
+    display: inline-block;
+  }
+  
+  .question {
     color: black;
     font-size: 20px;
-    width:700px;
-    height:50px;
+    width: 700px;
+    height: 50px;
     margin-top: 20px;
     margin-left: 60px;
-}
-.option{
+  }
+  
+  .option {
     background-color: white;
     width: 160px;
     height: 30px;
@@ -101,15 +82,16 @@
     margin-left: 60px;
     padding-left: 10px;
     padding-top: 5px;
-}
-.back-matching{
+  }
+  
+  .back-matching {
     padding-top: 100px;
     width: 100%;
-    height:80px;
+    height: 80px;
     display: flex;
-    
-}
-.backs{
+  }
+  
+  .backs {
     padding-top: 7px;
     margin-left: 30px;
     padding-bottom: 10px;
@@ -118,8 +100,9 @@
     border-radius: 30px;
     font-weight: bolder;
     font-size: 22px;
-}
-.matching{
+  }
+  
+  .matching {
     padding-top: 10px;
     margin-left: 520px;
     padding-bottom: 10px;
@@ -128,4 +111,53 @@
     border-radius: 40px;
     font-weight: 600;
     font-size: 22px;
-}
+  }
+  
+  /* Media query for smaller screens (e.g., mobile phones) */
+  @media screen and (max-width: 600px) {
+    .surveys-logo {
+      margin-bottom: 10px;
+      width: 100px;
+      height: 100px;
+    }
+  
+    .surveys-name,
+    .surveys {
+      margin-left: 0;
+      font-size: 30px;
+      padding-top: 10px;
+    }
+  
+    .surveys-smallbox {
+      margin-left: 20px;
+      width: 90%;
+      height: auto;
+      padding: 20px;
+    }
+  
+    .question {
+      font-size: 18px;
+      width: 100%;
+      height: auto;
+    }
+  
+    .option {
+      width: 100%;
+    }
+  
+    .back-matching {
+      padding-top: 50px;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .backs {
+      margin-left: 0;
+      margin-bottom: 20px;
+    }
+  
+    .matching {
+      margin-left: 0;
+    }
+  }
+  
