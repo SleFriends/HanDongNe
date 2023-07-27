@@ -1,15 +1,25 @@
-import React from 'react';
+// mypage.js
+import React, { useState } from 'react';
 import '../css/mypage.css'; // 경로 변경
 import bannerImage from '../image/banner.png'; // 경로 변경
 
 const MyPage = () => {
+  const [id, reviseId] = useState('');
+  const [password, revisePassword] = useState('');  
+
+  const newId = (event) => {
+    reviseId(event.target.value);
+  };
+  const newPassword = (event) => {
+    revisePassword(event.target.value);
+  };
   const handleImageClick = () => {
     // Add your desired response when the image is clicked here
     alert('광고 입니다!');
   };
   return (
     <div className="mypage-container">
-      <h>마이페이지</h>
+      <div>마이페이지</div>
       <div className="rectangle">
         <div className="user-info">
           <h2>내정보</h2>
@@ -17,11 +27,21 @@ const MyPage = () => {
             <div>계정</div>
             <div>학교인증 ox</div>
             <div>
-              <input type="text" placeholder="아이디" />
+              <textarea
+                type = "text"
+                value = {id}
+                onChange = {newId}
+                placehloder = "아이디">
+                </textarea>
               <button>수정하기</button>
             </div>
             <div>
-              <input type="password" placeholder="비밀번호" />
+              <textarea
+                type = "password"
+                value = {password}
+                onChange = {newPassword}
+                placeholder = "비밀번호">
+                </textarea>
               <button>수정하기</button>
             </div>
           <div className="account-email">
@@ -42,7 +62,7 @@ const MyPage = () => {
           </div>
         </div>
         <img src={bannerImage} alt="Banner" onClick={handleImageClick} />
-      </div>    
+      </div>
       <button className="back-button">뒤로가기</button>
     </div>
   );
