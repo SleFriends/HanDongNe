@@ -205,3 +205,80 @@ textarea.pwcarea{
     /* 기타 버튼 스타일을 추가로 지정할 수 있습니다. */
   }
   
+  /* register.css */
+/* ... Existing styles ... */
+
+/* Media query for smaller phones */
+@media screen and (max-width: 480px) {
+    .bigbox {
+      margin-left: 10px;
+      width: 90%;
+    }
+  
+    .id,
+    .password,
+    .gmail,
+    .buttons {
+      margin-left: 0;
+      width: 100%;
+    }
+  
+    .idtext,
+    .pwtext,
+    .star,
+    .mandatorytext {
+      margin-left: 10px;
+    }
+  
+    textarea {
+      width: 60%;
+    }
+  
+    .idconfirm,
+    .gmailconnect,
+    .gmailconfirm,
+    .gmailcheck,
+    .signup,
+    .back {
+      width: 40%;
+      margin-left: 10px;
+    }
+  }
+  
+  /* Media query for large screens like TVs */
+  @media screen and (min-width: 1200px) {
+    .bigbox {
+      margin-left: 300px;
+      width: 700px;
+    }
+  
+    .id,
+    .password,
+    .gmail,
+    .buttons {
+      margin-left: 50px;
+      width: 700px;
+    }
+  
+    .idtext,
+    .pwtext,
+    .star,
+    .mandatorytext {
+      margin-left: 20px;
+    }
+  
+    textarea {
+      width: 240px;
+    }
+  
+    .idconfirm,
+    .gmailconnect,
+    .gmailconfirm,
+    .gmailcheck,
+    .signup,
+    .back {
+      width: 200px;
+      margin-left: 45px;
+    }
+  }
+  
