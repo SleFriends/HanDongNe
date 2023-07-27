@@ -1,10 +1,12 @@
-import React, { useState } from 'react'; // Import React and useState
-import { useEffect } from 'react'; // Import React and useState
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import '../css/register.css';
 import logo2 from '../image/logo2.png';
 import glogo from '../image/gmail.png';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../fbase';
+import { auth, dbService, collection, addDoc } from '../fbase'; // Import Firestore-related objects and functions
+
+
 
 function Register() {
   const [id, setId] = useState('');
@@ -21,13 +23,15 @@ function Register() {
   const [logFirst, setLogFirst] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
 
+
+
   useEffect(() => {
-    if (passwordConfirmation) {
-      setIsConfirmed(true); // 이메일 주소가 올바르면 isConfirmed를 true로 설정
+    if (password === passwordConfirmation) {
+      setIsConfirmed(true); // 비밀번호와 비밀번호 확인이 일치하면 isConfirmed를 true로 설정
     } else {
-      setIsConfirmed(false); // 이메일 주소가 올바르지 않으면 isConfirmed를 false로 설정
+      setIsConfirmed(false); // 비밀번호와 비밀번호 확인이 일치하지 않으면 isConfirmed를 false로 설정
     }
-  }, [passwordConfirmation]);
+  }, [password, passwordConfirmation]);
 
   const handleInputChange = (event) => {
     setEmail(event.target.value);
@@ -51,7 +55,37 @@ function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add your signup logic here, e.g., sending data to the server
+    
+    if (!id || !password || !email || !passwordConfirmation) {
+      console.log('유효하지 않은 입력 데이터입니다.');
+      return;
+    }
+
+    if (password !== passwordConfirmation) {
+      console.log('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+      return;
+    }
+
+    // Firestore 컬렉션에 문서를 추가합니다.
+    try {
+      const docData = {
+        id: id,
+        pw: password,
+        email: email,
+        schoolprove: passwordConfirmation
+      };
+
+      addDoc(collection(dbService, "user"), docData)
+        .then((docRef) => {
+          setValuel();
+          console.log('create 성공');
+        })
+        .catch((error) => {
+          console.log('문서 추가 오류:', error);
+        });
+    } catch (error) {
+      console.log('문서 추가 오류:', error);
+    }
   };
 
   const confirmEmail = (email) => {
@@ -65,6 +99,8 @@ function Register() {
     }
   };
 
+  
+  
 
   function handleGoogleLogin() {
     const provider = new GoogleAuthProvider();

@@ -1,8 +1,9 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
+import { getAuth } from 'firebase/auth'; // Auth 연결
+import { getFirestore, collection, addDoc } from "firebase/firestore"; // Database 연결
+import { getStorage } from "firebase/storage"; // storage 연결
 
+// Firebase 구성 객체
 const firebaseConfig = {
   apiKey: "AIzaSyDdgBJW-Jl2RWN_JpJslwtDapIIhqBZPXw",
   authDomain: "handongne1.firebaseapp.com",
@@ -13,9 +14,12 @@ const firebaseConfig = {
   measurementId: "G-FBT49TJ39H"
 };
 
-// Initialize the Firebase app with the config
+// Firebase 앱 초기화
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app); // 유저 정보 관리
+const dbService = getFirestore(app); // DB 관리
+const storage = getStorage(app); // 파일이나 사진등 텍스트가 아닌 내용 저장
 
-export const auth = getAuth(app);
-export const dbService = getFirestore(app);
-export const storage = getStorage(app);
+export { app, auth, dbService, storage, collection, addDoc }; // 다른 파일에서 사용할 수 있도록 export
+
+
