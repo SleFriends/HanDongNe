@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/register.css';
 import logo2 from '../image/logo2.png';
 import glogo from '../image/gmail.png';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth, dbService, collection, addDoc } from '../fbase'; // Import Firestore-related objects and functions
+import { auth, dbService, collection, addDoc, doc, updateDoc, getDoc, setDoc, getDocs } from '../fbase'; // Firestore 관련 객체와 함수들을 불러옵니다
 
 
 
@@ -16,11 +15,9 @@ function Register() {
   const [valuel, setValuel] = useState();
   const [firstStep, setFirstStep] = useState('');
   const [getImformation, setGetImformation] = useState();
-  const [imageUpload, setImageUpload] = useState();
   const [imageUrl, setImageUrl] = useState("");
   const [userData, setUserData] = useState("");
   const [init, setInit] = useState(false);
-  const [logFirst, setLogFirst] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
 
 
@@ -33,11 +30,12 @@ function Register() {
     }
   }, [password, passwordConfirmation]);
 
+
+
   const handleInputChange = (event) => {
     setEmail(event.target.value);
   };
 
-  
   const handleIdChange = (event) => {
     setId(event.target.value);
     console.log(id);
@@ -55,14 +53,19 @@ function Register() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+
     if (!id || !password || !email || !passwordConfirmation) {
-      console.log('유효하지 않은 입력 데이터입니다.');
+      alert('유효하지 않은 입력 데이터입니다.');
       return;
     }
 
     if (password !== passwordConfirmation) {
-      console.log('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+      alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+      return;
+    }
+
+    if (!isConfirmed) {
+      alert('이메일 주소가 "handong.ac.kr"로 끝나지 않습니다.');
       return;
     }
 
@@ -88,19 +91,19 @@ function Register() {
     }
   };
 
+
+
   const confirmEmail = (email) => {
     const emailSuffix = "handong.ac.kr";
-    
+
     // 이메일 주소가 ".handong.ac.kr"로 끝나는지 확인
     if (email.endsWith(emailSuffix)) {
-      setPasswordConfirmation(true);
+      setIsConfirmed(true);
     } else {
-      setPasswordConfirmation(false);
+      setIsConfirmed(false);
     }
   };
 
-  
-  
 
   function handleGoogleLogin() {
     const provider = new GoogleAuthProvider();
@@ -116,25 +119,68 @@ function Register() {
         // handleOnSubmitWithdocUserid(personUid, personEmail, personName); // handleOnSubmitWithdocUserid is not defined. Define or remove this function.
         setEmail(auth.currentUser.email);
         confirmEmail(email);
-       
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
-  function Logincheck() {
-    if (logFirst) {
-      return false;
-    } else {
-      return true;
-    }
-  }
 
   const onLogOutClick = () => {
     auth.signOut();
     console.log('logout');
   };
+
+  async function incrementIdFieldWithCurrentUser(currentUserId) {
+    try {
+      const docRef = doc(dbService, "ALL_ID", "id");
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const currentValue = docSnap.data().count || 0; // If the field 'count' doesn't exist, set it to 0
+        const updatedValue = currentValue + 1;
+
+        // Update the field 'count' with the incremented value and add the current user's ID
+        await updateDoc(docRef, {
+          count: updatedValue,
+          [currentUserId]: true
+        });
+
+        console.log('Field updated successfully.');
+      } else {
+        console.log("Document does not exist!");
+      }
+    } catch (error) {
+      console.log('Error updating field:', error);
+    }
+  }
+
+  async function fetchData() { // firebase Update : 함수 원하는 collection 안에 원하는 doc 안에 내용을 읽어올 때 사용한다.
+    const docRef = doc(dbService, "ID_ALL", "id");
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      setFirstStep(docSnap.data().create);
+    } else {
+      console.log("No such document!");
+      setFirstStep('정보 없음');
+    }
+  }
+
+  async function fetchAllData() {  // firebase Update : 함수 원하는 collection 안에 모든 doc을 읽어올 때 사용한다.
+    const data = await getDocs(collection(dbService, "create"));
+    const newData = data.docs.map(doc => ({ ...doc.data() }));
+    setGetImformation(newData);
+
+    console.log(newData);
+    console.log("get create doc!");
+  }
+
+  useEffect(() => {
+    fetchData();
+    fetchAllData();
+  }, [])
+
+
 
   function onReadUserData(user) {
     auth.onAuthStateChanged(async (user) => {
@@ -167,9 +213,9 @@ function Register() {
                   placeholder="아이디를 입력하시오."
                 ></textarea>
               </div>
-              <button type="submit" className="idconfirm">
+              {/* <button type="submit" className="idconfirm">
                 중복확인
-              </button>
+              </button> */}
             </div>
             <div className="password">
               <div className="pwtext">* PW :</div>
@@ -194,27 +240,41 @@ function Register() {
               <div className="gmailgeneral">
                 <div className="star">*</div>
                 <img src={glogo} className="gmaillogo" alt="Gmail Logo" />
-                <button type="submit" className={isConfirmed ? "gmailconnect confirmed" : "gmailconnect"} onClick={handleGoogleLogin}>
-        학교계정 연동하기
-      </button>
-      <input
-        type="text"
-        placeholder="현재 이메일"
-        value={email}
-      />
-      <button type="submit" className={isConfirmed ? "gmailconnect confirmed" : "gmailconnect"} onClick={() => confirmEmail(email)}>
-        연동
-      </button>
+                <button
+                  type="submit"
+                  className={isConfirmed ? "gmailconnect confirmed" : "gmailconnect"}
+                  onClick={handleGoogleLogin}
+                >
+                  학교계정 연동하기
+                </button>
+                <input
+                  type="text"
+                  placeholder="현재 이메일"
+                  value={email}
+                  onChange={handleInputChange} // Update email input value
+                />
+                <button
+                  type="submit"
+                  className={isConfirmed ? "gmailconnect confirmed" : "gmailconnect"}
+                  onClick={() => setIsConfirmed(email.endsWith("handong.ac.kr"))} // Check email confirmation
+                >
+                  연동
+                </button>
                 <p>
-        {passwordConfirmation
-          ? "이메일 주소가 'handong.ac.kr'로 끝납니다." 
-          : "이메일 주소가 'handong.ac.kr'로 끝나지 않습니다."}
-      </p>
+                  {passwordConfirmation
+                    ? "이메일 주소가 'handong.ac.kr'로 끝납니다."
+                    : "이메일 주소가 'handong.ac.kr'로 끝나지 않습니다."}
+                </p>
               </div>
               <div className="mandatorytext">* 표시는 필수 </div>
             </div>
             <div className="buttons">
-              <button type="submit" className="signup" onClick={handleSubmit}>
+              <button
+                type="submit"
+                className="signup"
+                onClick={handleSubmit}
+                disabled={!isConfirmed} // Disable the button if email is not confirmed or passwords don't match
+              >
                 회원가입하기
               </button>
               <button type="submit" className="back">

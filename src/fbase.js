@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth'; // Auth 연결
-import { getFirestore, collection, addDoc } from "firebase/firestore"; // Database 연결
+import { getFirestore, collection, addDoc , doc, getDoc, updateDoc, getDocs} from "firebase/firestore"; // Database 연결
 import { getStorage } from "firebase/storage"; // storage 연결
 
 // Firebase 구성 객체
@@ -20,6 +20,6 @@ const auth = getAuth(app); // 유저 정보 관리
 const dbService = getFirestore(app); // DB 관리
 const storage = getStorage(app); // 파일이나 사진등 텍스트가 아닌 내용 저장
 
-export { app, auth, dbService, storage, collection, addDoc }; // 다른 파일에서 사용할 수 있도록 export
+export { app, auth, dbService, storage, collection, addDoc,doc, getDoc, updateDoc, getDocs}; // 다른 파일에서 사용할 수 있도록 export
 
 

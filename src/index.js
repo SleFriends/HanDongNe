@@ -9,5 +9,5 @@ import Myposts from './page/myposts'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Survey />
+    <Register />
 );
