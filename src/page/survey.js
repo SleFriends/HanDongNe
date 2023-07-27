@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import '../css/survey.css'; // Make sure the CSS file path is correct
 import logo from '../image/logo.png';
+import { doc, updateDoc, getDoc } from "firebase/firestore";
+import { auth, dbService } from "../fbase"; // 파이어베이스 앱 초기화 및 데이터베이스 연결 설정을 한 파일
 
 function Survey() {
 
@@ -22,12 +24,84 @@ function Survey() {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // 선택한 옵션들을 출력해보기 (나중에 이부분을 서버로 보내서 저장할 수 있습니다)
-    console.log(selectedOptions);
+  const checkFieldExistence = async (fieldName) => {
+    try {
+      const docRef = doc(dbService, "user", /*auth.currentUser.uid*/'w2bvjO5Eq5vDomiDFx37'); // 문서의 참조를 가져옵니다.
+      const docSnap = await getDoc(docRef); // 문서의 스냅샷을 가져옵니다.
+      const docData = docSnap.data(); // 문서의 데이터를 가져옵니다.
+  
+      if (docData && docData[fieldName] !== undefined) {
+        // 해당 필드가 존재하는 경우
+        console.log(`문서에 ${fieldName} 필드가 존재합니다.`);
+        console.log(`필드 값: ${docData[fieldName]}`);
+        return(true);
+      } else {
+        // 해당 필드가 존재하지 않는 경우
+        console.log(`문서에 ${fieldName} 필드가 존재하지 않습니다.`);
+        return(false);
+      }
+    } catch (error) {
+      console.error("필드 확인 오류:", error);
+    }
+  
   };
 
+  // 설문 조사가 처음인지 여부를 검사하고 필드 값을 업데이트하는 함수
+  const updateDocument = async (selectedOptions) => {
+    try {
+      // 해당 유저의 문서를 가져옵니다.
+      const userDocRef = doc(dbService, "user", /*auth.currentUser.uid*/ 'w2bvjO5Eq5vDomiDFx37');
+      const userDocSnap = await getDoc(userDocRef);
+      const userData = userDocSnap.data();
+      
+      //forMap데이터를 가져옵니다.
+      let docRef = doc(dbService, "forMap", "State"); // 컬렉션 이름(forMap)과 문서 이름(State)으로 문서의 참조를 만듭니다.
+      let docSnap = await getDoc(docRef); // 문서의 스냅샷을 가져옵니다.
+      let docData = docSnap.data();
+
+      // 만약 이미 설문 조사를 했으면
+      if (checkFieldExistence('question1')) {
+
+        //기존 값을 1씩 감소시킵니다
+        const decreaseField = userData.question1;
+        const updatedValue = docData[decreaseField] - 1;
+        updateDoc(docRef, {
+          ...userData.forMap,
+          [decreaseField]: updatedValue,
+          }
+        );
+        updateDoc(userDocRef, selectedOptions); // 문서를 업데이트합니다.
+        console.log("문서 업데이트 성공");
+      
+        //업데이트된 값으로 재참조합니다.
+        docRef = doc(dbService, "forMap", "State"); 
+        docSnap = await getDoc(docRef); 
+        docData = docSnap.data();
+
+        // 새로운 값을 1씩 증가시킵니다.
+        const increaseField = selectedOptions.question1;
+        if (increaseField) {
+          const updatedValue = docData[increaseField] + 1;
+           updateDoc(docRef, {
+              ...userData.forMap,
+              [increaseField]: updatedValue,
+            }
+          );
+        }
+      }
+    } catch (error) {
+      console.error("문서 업데이트 오류:", error);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    console.log(auth.currentUser.displayName);
+    console.log(auth.currentUser.uid);
+    updateDocument(selectedOptions);
+  };
+  
 
 
   return (

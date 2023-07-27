@@ -11,7 +11,7 @@ import { auth, dbService, collection, addDoc } from '../fbase'; // Import Firest
 function Register() {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState(false);
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [email, setEmail] = useState('');
   const [valuel, setValuel] = useState();
   const [firstStep, setFirstStep] = useState('');
