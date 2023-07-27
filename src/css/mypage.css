@@ -13,7 +13,6 @@
   }
 
   .back-button {
-    /* 뒤로가기 버튼 스타일링 */
     position: absolute;
     bottom: 15px;
     left: 10vw;
@@ -34,14 +33,9 @@
     height: 500px;
     background-color: white;
     margin-top: 70px;
-    /* margin-left: w; */
     display: flex; 
   
   }
-
-  /* .container > div:first-child {
-    margin-left: 5vw;
-  } */
 
   .rectangle img {
     text-align: center;
@@ -50,8 +44,7 @@
     max-height: 90%;
   }
   .user-info {
-    /* text-align: center; */
-    color: black; /* Text color for user info section */
+    color: black; 
     padding: 10px;
     margin-top: 50px;
     font-size: 20px;
@@ -73,8 +66,8 @@
   .account-info > div:nth-child(2),
   .account-info > div:nth-child(5)  {
     margin-bottom: 10px;
-    border: 1px solid black; /* Add a 1px solid border with color #ccc */
-    padding: 5px; /* Add padding to give some space between the border and content */
+    border: 1px solid black; 
+    padding: 5px; 
   }
   
   
@@ -96,7 +89,7 @@
   }
 
   .matching-result {
-    color: black; /* Text color for matching result section */
+    color: black; 
   }
   
   .matching-result h2 {
@@ -105,7 +98,7 @@
 
   .urls {
     text-align: center;
-    color: black; /* Text color for URLs */
+    color: black; 
     font-size: 18px;
   }
   .account-email{
@@ -114,21 +107,19 @@
   }
 
   .save-button-container {
-    text-align: center; /* 가운데 정렬 */
-    margin-top: 60px; /* 추가한 버튼을 위로 이동 */
+    text-align: center; 
+    margin-top: 60px; 
     margin-left: 20vw;
   }
 
   .save-button-container  .save-button {
-    /* 버튼 스타일링 */
     padding: 5px 15px;
     font-size: 15px;
     color: black;
-    border-radius: 20px; /* 둥근 테두리 스타일 적용 */
+    border-radius: 20px; 
     cursor: pointer;
   }
   
   .save-button-container .save-button:hover {
-    /* 마우스 호버 시 배경색 변경 */
     background-color: #979fa6;
   }
