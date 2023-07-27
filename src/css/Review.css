@@ -1,225 +1,149 @@
 
+/* body{
+    margin:0px;
+} */
 .reviews-background{
-    background-color:#1E90FF;
-    width:100vw;
-    height:100vh;
+  background-color:#1E90FF;
+  width:100vw;
+  height:100vh;
 }
 .backgroundmyposts{
-    background-color: white;
-    width:100vw;
-    height:100vh;
+  background-color: white;
+  width:100vw;
+  height:100vh;
 }
 .heads{
- margin-top: 0px;
- display: flex;
+margin-top: 0px;
+display: flex;
 
 }
 .backbutton{
-    width:70px;
-    height:40px;
-    border-radius: 20px;
-    font-weight: 800;
-    font-size:larger;
-    margin-top: 10px;
+  width:70px;
+  height:40px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size:larger;
+  margin-top: 10px;
 }
 .mypostsbackbutton{
-    width:100px;
-    height:40px;
-    font-weight: 800;
-    font-size:larger;
-    margin-top: 40px;
+  width:100px;
+  height:40px;
+  font-weight: 800;
+  font-size:larger;
+  margin-top: 40px;
 }
 .reviews-back{
-    margin-top: 0px;
-    margin-left: 40px;
+  margin-top: 0px;
+  margin-left: 40px;
 
 }
 .headslogo{
-    background-color: #1E90FF;
-    margin-left: 100px;
-    width:140px;
-    height:140px;
+  background-color: #1E90FF;
+  margin-left: 100px;
+  width:140px;
+  height:140px;
 
 }
 .myposts{
-    width:130px;
-    height:40px;
-    border-radius: 20px;
-    font-weight: 800;
-    font-size:larger;
-    margin-top: 10px;
-    margin-left: 390px;
+  width:130px;
+  height:40px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size:larger;
+  margin-top: 10px;
+  margin-left: 390px;
 }
 
 h1.firsth1{
-    width:250px;
-    height:70px;
-    margin-left: 310px;
-    margin-top: 50px;
-    color: white;
+  width:250px;
+  height:70px;
+  margin-left: 310px;
+  margin-top: 50px;
+  color: white;
 }
 h1.secondh1{
-    width: 700px;
-    height:70px;
-    margin-left: 520px;
-    margin-top: 50px;
-    color: gray;
+  width: 700px;
+  height:70px;
+  margin-left: 520px;
+  margin-top: 50px;
+  color: gray;
 }
 
 .reviews-bigbox{
-    background-color:white;
-    width:95%;
-    height:80%;
-    margin-left:50px; 
+  background-color:white;
+  width:95%;
+  height:80%;
+  margin-left:50px; 
 }
 
 .bigboxmyposts{
 
-    width:95%;
-    height:80%;
-    margin-left:50px; 
+  width:95%;
+  height:80%;
+  margin-left:50px; 
 }
 
 .middlebox{
-    display:flex;
-    align-items: center;
-    
+  display:flex;
+  align-items: center;
+  
 }
 .middleboxmyposts{
 
 }
 
 img.pic{
-    background-color: #1E90FF;
-    margin-top: 15px;
-    margin-left: 70px;
-    width:120px;
-    height:120px;
-    border-radius: 60px;
+  background-color: #1E90FF;
+  margin-top: 15px;
+  margin-left: 70px;
+  width:120px;
+  height:120px;
+  border-radius: 60px;
 }
 .smallbox{
-    background-color: #89CFF0;
-    display: inline-block;
-    padding :20px;
-    border-radius: 20px;
-    width : 1000px;
-    height :110px;
-    margin-left: 100px;
-    margin-top:18px;
-    display:flex;
-    align-items: center;
+  background-color: #89CFF0;
+  display: inline-block;
+  padding :20px;
+  border-radius: 20px;
+  width : 1000px;
+  height :110px;
+  margin-left: 100px;
+  margin-top:18px;
+  display:flex;
+  align-items: center;
 }
 .dividetext{
-    display:flex;
-    align-items: center;
+  display:flex;
+  align-items: center;
 }
 .review-text{
-    margin-left: 20px;
-    font-size: 30px;
+  margin-left: 20px;
+  font-size: 30px;
 }
 .review-textarea{
-    width: 95%;
-    height : 80px;
-    margin-left: 20px;
-    margin-top: 20px;
-    border-radius:20px;
-    padding-left:10px;
-    padding-top:10px; 
+  width: 95%;
+  height : 80px;
+  margin-left: 20px;
+  margin-top: 20px;
+  border-radius:20px;
+  padding-left:10px;
+  padding-top:10px; 
 }
 .buttonflex{
-    display:center;
-    
+  display:center;
+  
 }
 .fix{
-    margin-top: 90px;
-    margin-left: 650px;
+  margin-top: 90px;
+  margin-left: 650px;
 }
 .registerown{
 
-    margin-left:890px;
-    margin-top:0px;
-    border-radius: 20%;
-    width :70px;
-    height :30px;
-    font-size:12px;
-    background-color:#89CFF0;
+  margin-left:890px;
+  margin-top:0px;
+  border-radius: 20%;
+  width :70px;
+  height :30px;
+  font-size:12px;
+  background-color:#89CFF0;
 }
-
-/* Review.css */
-/* ... Existing styles ... */
-
-/* Media query for smaller phones */
-@media screen and (max-width: 480px) {
-    .heads {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .headslogo {
-      margin: 20px 0;
-    }
-  
-    .firsth1 {
-      margin: 20px 0;
-      font-size: 24px;
-    }
-  
-    .middlebox {
-      flex-direction: column;
-    }
-  
-    .smallbox {
-      margin: 10px 0;
-      width: 90%;
-      height: auto;
-    }
-  
-    .review-textarea {
-      width: 100%;
-    }
-  
-    .myposts {
-      margin-left: 0;
-    }
-  }
-  
-  /* Media query for large screens like TVs */
-  @media screen and (min-width: 1200px) {
-    .heads {
-      justify-content: space-between;
-    }
-  
-    .headslogo {
-      margin-left: 100px;
-    }
-  
-    .firsth1 {
-      margin-left: 520px;
-      font-size: 40px;
-    }
-  
-    .reviews-bigbox {
-      margin-left: 200px;
-      width: 80%;
-    }
-  
-    .middlebox {
-      margin: 20px 0;
-      justify-content: space-between;
-    }
-  
-    .smallbox {
-      width: 48%;
-      height: 200px;
-      margin: 0;
-    }
-  
-    .pic {
-      margin-top: 0;
-    }
-  
-    .registerown {
-      margin-left: 60%;
-    }
-  }
-  
