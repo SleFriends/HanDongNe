@@ -105,7 +105,7 @@ function Survey() {
 
 
   return (
-    <div>
+    <div className="survey-container">
       <div className="surveys-heads">
         <img src={logo} alt="Logo" className='surveys-logo' />
         <div className="surveys-name">
