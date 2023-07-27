@@ -7,10 +7,7 @@ import {
 // import HelloPage from "./components/hello";
 // import { Link } from "react-router-dom";
 
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
-import 'firebase/storage';
+
 
 import React from 'react';
 import { useState, useEffect } from "react";
