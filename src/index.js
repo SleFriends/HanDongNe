@@ -6,8 +6,9 @@ import Survey from './page/survey';
 import Review from './page/Review';
 import Register from './page/register';
 import Myposts from './page/myposts'
+import MyPage from './page/mypage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Register />
+    <MyPage />
 );
