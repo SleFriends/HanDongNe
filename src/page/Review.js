@@ -90,12 +90,18 @@ function Review() {
                 placeholder="게시물을 작성해주세요."
               ></textarea>
               <button type="submit" class='registerown'>
-                등록하기
+                등록
               </button>
             </form>
           </div>
         </div>
 
+        <div class='middlebox'>
+          <img class='pic' height={80} src={logo2} style={{marginRight:"px"}}></img>
+          <div class='smallbox'>
+            후기
+          </div>
+        </div>
         <div class='middlebox'>
           <img class='pic' height={80} src={logo2} style={{marginRight:"px"}}></img>
           <div class='smallbox'>
