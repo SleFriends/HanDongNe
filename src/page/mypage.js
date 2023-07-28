@@ -8,9 +8,12 @@ const MyPage = () => {
   const [password, revisePassword] = useState('');  
 
   const newId = (event) => {
+    console.log(event.target.value);
     reviseId(event.target.value);
   };
+
   const newPassword = (event) => {
+    console.log(event.target.value);
     revisePassword(event.target.value);
   };
   const handleImageClick = () => {
@@ -28,15 +31,17 @@ const MyPage = () => {
             <div>학교인증 ox</div>
             <div>
               <textarea
+                className = "account-info-input"
                 type = "text"
                 value = {id}
                 onChange = {newId}
-                placehloder = "아이디">
+                placeholder = "아이디">
                 </textarea>
               <button>수정하기</button>
             </div>
             <div>
               <textarea
+                className = "account-info-input"
                 type = "password"
                 value = {password}
                 onChange = {newPassword}
