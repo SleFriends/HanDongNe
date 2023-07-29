@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../css/register.css';
 import logo2 from '../image/logo2.png';
-import glogo from '../image/gmail.png';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth, dbService, collection, addDoc, doc, updateDoc, getDoc, setDoc, getDocs } from '../fbase'; // Firestore 관련 객체와 함수들을 불러옵니다
-
+import glogo from '../image/gmail.png';// Register.js
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithPopup } from 'firebase/auth'; // 수정: getAuth 제거, createUserWithEmailAndPassword 추가
+import { auth, dbService, collection, addDoc, doc, getDoc, getDocs, updateDoc, setDoc } from '../fbase'; // Firebase 설정 파일 경로를 적절히 수정하세요.
 
 
 function Register() {

@@ -96,7 +96,7 @@ function Survey() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     console.log(auth.currentUser.displayName);
     console.log(auth.currentUser.uid);
     updateDocument(selectedOptions);
@@ -209,7 +209,7 @@ function Survey() {
               onChange={(e) => handleOptionChange("question5", e.target.value)} // 옵션 선택시 상태 업데이트
             >
                 <option value="select">옵션</option>
-                <option value="meet">네</option>
+                <option value="meet">예</option>
                 <option value="noMeet">아니오</option>
               </select>
             </form>
