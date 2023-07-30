@@ -91,7 +91,7 @@ const MyPage = () => {
         return;
       }
       // const uid = auth.currentUser.uid;
-      const userDocRef = doc(dbService, 'user', '4LYzrGx8Xv2h4EnXHHdj');
+      const userDocRef = doc(dbService, 'user', auth.currentUser.email);
 
       // 사용자 아이디 업데이트
       await updateDoc(userDocRef, { id });
@@ -111,7 +111,7 @@ const MyPage = () => {
         return;
       }
       // const uid = auth.currentUser.uid;
-      const userDocRef = doc(dbService, 'user', '4LYzrGx8Xv2h4EnXHHdj'); // dbService의 doc 메서드 사용
+      const userDocRef = doc(dbService, 'user', auth.currentUser.email); // dbService의 doc 메서드 사용
 
       // 사용자 비밀번호 업데이트
       await updateDoc(userDocRef, { password }); // dbService의 updateDoc 메서드 사용

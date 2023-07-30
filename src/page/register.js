@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import '../css/register.css';
 import logo2 from '../image/logo2.png';
 import glogo from '../image/gmail.png';// Register.js
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithPopup } from 'firebase/auth'; // 수정: getAuth 제거, createUserWithEmailAndPassword 추가
 import { auth, dbService, collection, addDoc, doc, getDoc, getDocs, updateDoc, setDoc , deleteUser } from '../fbase'; // Firebase 설정 파일 경로를 적절히 수정하세요.
+import Login from './Login';
 
 // ... 이하 코드는 이전과 동일 ...
-
-
-
 
 function Register() {
   const [id, setId] = useState('');
@@ -297,7 +296,7 @@ function Register() {
                 회원가입하기
               </button>
               <button type="submit" className="back">
-                뒤로가기
+                <Link to="/Login"style={ {textDecoration: "none", color: "black" }}>뒤로가기</Link>
               </button>
             </div>
           </div>

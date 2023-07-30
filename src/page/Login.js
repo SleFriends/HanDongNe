@@ -29,10 +29,10 @@ function Login() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log('로그인 성공:', userCredential.user);
-        // 로그인에 성공하면, 사용자를 /register 페이지로 리디렉션합니다.
+        // 로그인에 성공하면, 사용자를 /Home 페이지로 리디렉션합니다.
         alert("로그인 되셨습니다~");
-        console.log(auth.currentUser.email)
-        //window.location.href = "/register";
+        // Programmatic navigation to Home page after successful login
+        window.location.href = "/Home";
       })
       .catch((error) => {
         console.error('로그인 실패:', error);
@@ -75,11 +75,12 @@ function Login() {
         </div>
       </div>
       <Routes>
-        {/* No need to use Switch, simply use Route */}
         <Route path="/Home" element={<Home />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );
 }
+
 
 export default Login;
