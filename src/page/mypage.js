@@ -10,11 +10,11 @@ const MyPage = () => {
   const [id, reviseId] = useState('');
   const [pw, revisePassword] = useState('');  
   const [email, setEmail] = useState('');
-  const [question1, setQuestion1] = useState(''); // 사용자의 답변을 저장할 상태 변수
-  const [question2, setQuestion2] = useState(''); // 사용자의 답변을 저장할 상태 변수
-  const [question3, setQuestion3] = useState(''); // 사용자의 답변을 저장할 상태 변수
-  const [question4, setQuestion4] = useState(''); // 사용자의 답변을 저장할 상태 변수
-  const [question5, setQuestion5] = useState(''); // 사용자의 답변을 저장할 상태 변수
+  const [question1, setQuestion1] = useState(''); 
+  const [question2, setQuestion2] = useState(''); 
+  const [question3, setQuestion3] = useState(''); 
+  const [question4, setQuestion4] = useState('');
+  const [question5, setQuestion5] = useState(''); 
   const [Animal, setRoom3] = useState('');
   const [E, setRoom2_1] = useState('');
   const [I, setRoom2_2] = useState('');
@@ -29,11 +29,10 @@ const MyPage = () => {
   const [isPwEditable, setIsPwEditable] = useState(false);
 
   useEffect(() => {
-    // Fetch user data and matching results from Firebase Firestore
     const fetchUserData = async () => {
       try {
         // const uid = auth.currentUser.email;
-        const userDocRef = doc(dbService, 'user', '4LYzrGx8Xv2h4EnXHHdj');
+        const userDocRef = doc(dbService, 'user', 'loy7153@handong.ac.kr');
         const userDocSnapshot = await getDoc(userDocRef);
         if (userDocSnapshot.exists()) {
           const userData = userDocSnapshot.data();
@@ -41,11 +40,11 @@ const MyPage = () => {
           revisePassword(userData.pw);
           setEmail(userData.email);
           prove(userData.school_prove);
-          setQuestion1(userData.question1); // 사용자의 답변을 설정
-          setQuestion2(userData.question2); // 사용자의 답변을 설정
-          setQuestion3(userData.question3); // 사용자의 답변을 설정          
-          setQuestion4(userData.question4); // 사용자의 답변을 설정
-          setQuestion5(userData.question5); // 사용자의 답변을 설정
+          setQuestion1(userData.question1);
+          setQuestion2(userData.question2); 
+          setQuestion3(userData.question3);       
+          setQuestion4(userData.question4); 
+          setQuestion5(userData.question5); 
         }
         const AnimalDocRef = doc(dbService, 'KakaoTalkLink', 'AnimalTalkRoom');
         const AnimalDocSnapshot = await getDoc(AnimalDocRef);
@@ -77,9 +76,6 @@ const MyPage = () => {
         if(workDocSnapshot.exists()){
           setRoom4(workDocSnapshot.data().WorkOut);
         }
-        // const matchingResultsSnapshot = await dbService.collection('KakaoTalkLink').get();
-        // const matchingResultsData = matchingResultsSnapshot.docs.map((doc) => doc.data());
-        // setMatchingResults(matchingResultsData);
       } catch (error) {
         console.error('데이터 가져오기 오류:', error);
       }
@@ -95,34 +91,20 @@ const MyPage = () => {
         return;
       }
       // const uid = auth.currentUser.email;
-      const userDocRef = doc(dbService, 'user', '4LYzrGx8Xv2h4EnXHHdj'); // dbService의 doc 메서드 사용
+      const userDocRef = doc(dbService, 'user', 'loy7153@handong.ac.kr'); 
 
       // 사용자 비밀번호 업데이트
-      await updateDoc(userDocRef, { pw }); // dbService의 updateDoc 메서드 사용
+      await updateDoc(userDocRef, { pw });
 
       console.log('비밀번호가 업데이트되었습니다:', pw);
-      window.alert('비밀번호가 수정되었습니다.');
+      window.alert('마이페이지가 저장되었습니다.');
     } catch (error) {
       console.error('비밀번호 업데이트 오류:', error);
       window.alert('비밀번호가 수정되지 않았습니다.');
     }
   };
-  const newId = (event) => {
-    console.log(event.target.value);
-    reviseId(event.target.value);
-  };
-
-  const newPassword = (event) => {
-    console.log(event.target.value);
-    revisePassword(event.target.value);
-  };
   const handleImageBanner = () => {
-    // Add your desired response when the image is clicked here
     alert('광고 입니다!');
-  };
-  const handlesave = () => {
-    // Add your desired response when the image is clicked here
-    alert('저장되었습니다!');
   };
 
   return (
@@ -158,31 +140,31 @@ const MyPage = () => {
             <h2>매칭 결과 확인</h2>
             {question1 && (
               <div>
-                {question1 === '전라도' ? (
+                {question1 === 'JL' ? (
                   <p>
                     전라도 <a href={Jeolla} target="_blank" rel="noreferrer">
                       {Jeolla}
                     </a>
                   </p>
-                ) : question1 === '경기도' ? (
+                ) : question1 === 'GW' ? (
                   <p>
                     경기도 <a href={SoeulGyeonggi} target="_blank" rel="noreferrer">
                       {SoeulGyeonggi}
                     </a>
                   </p>
-                ) : question1 === '강원도' ? (
+                ) : question1 === 'GW' ? (
                   <p>
                     강원도 <a href={Gangwon} target="_blank" rel="noreferrer">
                       {Gangwon}
                     </a>
                   </p>
-                ) : question1 === '충청도' ? (
+                ) : question1 === 'CC' ? (
                   <p>
                     충청도 <a href={Chungcheong} target="_blank" rel="noreferrer">
                       {Chungcheong}
                     </a>
                   </p>
-                ) : question1 === '경상도' ? (
+                ) : question1 === 'GS' ? (
                   <p>
                     경상도 <a href={Gyeongsang} target="_blank" rel="noreferrer">
                       {Gyeongsang}
@@ -195,13 +177,13 @@ const MyPage = () => {
             )}
         {question2 && (
           <div>
-            {question2 === 'E***' ? (
+            {question2 === 'extro' ? (
               <p>
                 MBTI E <a href={E} target="_blank" rel="noreferrer">
                   {E}
                 </a>
               </p>
-            ) : question2 === 'I***' ? (
+            ) : question2 === 'intro' ? (
               <p>
                 MBTI I <a href={I} target="_blank" rel="noreferrer">
                   {I}
@@ -214,10 +196,10 @@ const MyPage = () => {
         )}
         {question3 && (
           <div>
-          {question3 === '예' ? (
+          {question3 === 'workOut' ? (
             <p>
-          동물 <a href={Animal} target="Animal" rel="noreferrer">
-               {Animal}
+          운동 <a href={WorkOut} target="Animal" rel="noreferrer">
+               {WorkOut}
             </a>
             </p>            
           ) : (
@@ -227,10 +209,10 @@ const MyPage = () => {
           )}
         {question4 && (
            <div>
-           {question4 === '예' ? (
+           {question4 === 'animal' ? (
              <p>
-           운동 <a href={WorkOut} target="_blank" rel="noreferrer">
-                {WorkOut}
+           동물 <a href={Animal} target="_blank" rel="noreferrer">
+                {Animal}
              </a>
              </p>            
            ) : (
@@ -240,7 +222,7 @@ const MyPage = () => {
            )}
         {question5 && (
             <div>
-            {question3 === '예' ? (
+            {question5 === 'meet' ? (
               <p>
             실명방 <a href={RealName} target="_blank" rel="noreferrer">
                   {RealName}
