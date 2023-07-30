@@ -1,6 +1,6 @@
 import '../css/Review.css';
 import { Link } from 'react-router-dom';
-import { serverTimestamp, updateDoc , doc, getDoc, setDoc} from 'firebase/firestore';
+import { serverTimestamp, updateDoc , doc, getDoc, setDoc, query, orderBy, onSnapshot} from 'firebase/firestore';
 import React, { useState, useEffect } from 'react';
 import { auth,dbService, collection, addDoc} from '../fbase';
 import { firebase}  from 'firebase/compat/app';
@@ -13,10 +13,10 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 function Review() {
   const [userEmail, setUserEmail] = useState('');
   const [reviewText, setReviewText] = useState('');
+  const [reviews, setReviews] = useState([]);
 
   // 리뷰를 저장할 Firestore 컬렉션에 대한 참조
   const reviewsCollection = collection(dbService, 'reviews');
-
 
   useEffect(() => {
     const auth = getAuth();
@@ -32,15 +32,22 @@ function Review() {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    fetchReviews();
+  }, []);
+
   const fetchReviews = async () => {
     try {
-      const snapshot = await reviewsCollection.get();
-      const fetchedReviews = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        text: doc.data().text,
-        timestamp: doc.data().timestamp,
-        // Firestore에서 필요한 추가 속성이 있다면 더 추가할 수 있습니다.
-      }));
+      // Firestore에서 리뷰 데이터를 실시간으로 감지합니다.
+      const q = query(reviewsCollection, orderBy('timestamp', 'desc'));
+      onSnapshot(q, (querySnapshot) => {
+        const fetchedReviews = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          text: doc.data().text,
+          timestamp: doc.data().timestamp,
+        }));
+        setReviews(fetchedReviews);
+      });
     } catch (error) {
       console.error('리뷰를 불러오는데 오류 발생: ', error);
     }
@@ -137,18 +144,14 @@ function Review() {
           </div>
         </div>
 
-        <div class='middlebox'>
-          <img class='pic' height={80} src={logo2} style={{marginRight:"px"}}></img>
-          <div class='smallbox'>
-            후기
+        {reviews.map((review) => (
+          <div className="middlebox" key={review.id}>
+            <img className="pic" height={80} src={logo2} style={{ marginRight: "px" }}></img>
+            <div className="smallbox">
+              {review.text}
+            </div>
           </div>
-        </div>
-        <div class='middlebox'>
-          <img class='pic' height={80} src={logo2} style={{marginRight:"px"}}></img>
-          <div class='smallbox'>
-            후기
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
