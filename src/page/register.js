@@ -80,9 +80,10 @@ function Register() {
         // 예를 들면, 로그인 페이지로 리디렉션하는 방법은 다음과 같습니다.
         // window.location.href = "/login";
         StorageUser();
+        alert("회원가입이 완료되었습니다.");
       })
       .catch((error) => {
-        alert("회원가입 실패");
+        alert("회원가입이 불가합니다. 이미 가입한 아이디이거나 입력한 값이 잘못되었습니다.");
         console.error('회원가입 실패:', error);
       });
 
@@ -161,11 +162,9 @@ function Register() {
       });
   
       if (docRef) {
-        alert("회원가입이 완료되었습니다.");
         console.log('create firstStep에 저장 성공');
       }
     } catch (error) {
-      alert("회원가입이 불가합니다. 이미 가입한 아이디이거나 입력한 값이 잘못되었습니다.");
       console.error('create firstStep에 저장 실패', error);
     }
   }
