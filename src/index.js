@@ -10,5 +10,5 @@ import MyPage from './page/mypage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Home />
+    <Login />
 );

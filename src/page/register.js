@@ -3,7 +3,11 @@ import '../css/register.css';
 import logo2 from '../image/logo2.png';
 import glogo from '../image/gmail.png';// Register.js
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithPopup } from 'firebase/auth'; // 수정: getAuth 제거, createUserWithEmailAndPassword 추가
-import { auth, dbService, collection, addDoc, doc, getDoc, getDocs, updateDoc, setDoc } from '../fbase'; // Firebase 설정 파일 경로를 적절히 수정하세요.
+import { auth, dbService, collection, addDoc, doc, getDoc, getDocs, updateDoc, setDoc , deleteUser } from '../fbase'; // Firebase 설정 파일 경로를 적절히 수정하세요.
+
+// ... 이하 코드는 이전과 동일 ...
+
+
 
 
 function Register() {
@@ -50,9 +54,7 @@ function Register() {
     console.log(passwordConfirmation);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
+  const handleSubmit = () => {
     if (!id || !password || !email || !passwordConfirmation) {
       alert('유효하지 않은 입력 데이터입니다.');
       return;
@@ -68,29 +70,24 @@ function Register() {
       return;
     }
 
-    // Firestore 컬렉션에 문서를 추가합니다.
-    try {
-      const docData = {
-        id: id,
-        pw: password,
-        email: email,
-        schoolprove: passwordConfirmation
-      };
+    // Firebase 인증 객체를 가져옵니다.
+    const auth = getAuth();
 
-      addDoc(collection(dbService, "user"), docData)
-        .then((docRef) => {
-          setValuel();
-          console.log('create 성공');
-        })
-        .catch((error) => {
-          console.log('문서 추가 오류:', error);
-        });
-    } catch (error) {
-      console.log('문서 추가 오류:', error);
-    }
+    // 이메일과 비밀번호를 사용하여 새로운 사용자를 등록합니다.
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log('회원가입 성공:', userCredential.user);
+        // 회원가입에 성공하면, 원하는 페이지로 리디렉션하도록 설정합니다.
+        // 예를 들면, 로그인 페이지로 리디렉션하는 방법은 다음과 같습니다.
+        // window.location.href = "/login";
+        StorageUser();
+      })
+      .catch((error) => {
+        alert("회원가입 실패");
+        console.error('회원가입 실패:', error);
+      });
+
   };
-
-
 
   const confirmEmail = (email) => {
     const emailSuffix = "handong.ac.kr";
@@ -101,12 +98,13 @@ function Register() {
     } else {
       setIsConfirmed(false);
     }
+    
   };
 
 
   function handleGoogleLogin() {
     const provider = new GoogleAuthProvider();
-
+  
     signInWithPopup(auth, provider)
       .then((data) => {
         setInit(true);
@@ -118,6 +116,15 @@ function Register() {
         // handleOnSubmitWithdocUserid(personUid, personEmail, personName); // handleOnSubmitWithdocUserid is not defined. Define or remove this function.
         setEmail(auth.currentUser.email);
         confirmEmail(email);
+  
+        // signInWithPopup 함수 처리가 끝난 후에 deleteUser 함수 호출
+        deleteUser(auth.currentUser)
+          .then(() => {
+            console.log("사용자 인증 정보가 성공적으로 삭제되었습니다.");
+          })
+          .catch((error) => {
+            console.error("사용자 인증 정보 삭제에 실패했습니다.", error);
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -130,28 +137,41 @@ function Register() {
     console.log('logout');
   };
 
-  async function incrementIdFieldWithCurrentUser(currentUserId) {
+  // function StorageUser() {  // firebase create 함수 원하는 collection 안에 원하는 doc을 입력할 떄 쓴다.
+  //   console.log('create firstStep에 저장 시작');
+  //   const docRef = setDoc(doc(dbService, "user", auth.currentUser.email), { // create라는 collection 안에 firstStep이라는 document에 저장하겠다는 뜻
+  //       id: auth.currentUser.email,
+  //       pw: password,
+  //       email: auth.currentUser.email,
+  //       school_prove: "true"
+  //   });
+  //   if (docRef) {
+  //     alert("회원가입이 불가합니다. 이미 가입한 아이디 인지 입력하신 값을 잘못 넣으신게 없는지 확인해주세요");
+  //     console.log('create firstStep에 저장 성공');
+  //   }
+  // }
+  async function StorageUser() {
+    console.log('create firstStep에 저장 시작');
+  
     try {
-      const docRef = doc(dbService, "ALL_ID", "id");
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        const currentValue = docSnap.data().count || 0; // If the field 'count' doesn't exist, set it to 0
-        const updatedValue = currentValue + 1;
-
-        // Update the field 'count' with the incremented value and add the current user's ID
-        await updateDoc(docRef, {
-          count: updatedValue,
-          [currentUserId]: true
-        });
-
-        console.log('Field updated successfully.');
-      } else {
-        console.log("Document does not exist!");
+      const docRef = await setDoc(doc(dbService, "user", auth.currentUser.email), {
+        id: auth.currentUser.email,
+        pw: password,
+        email: auth.currentUser.email,
+        school_prove: "true"
+      });
+  
+      if (docRef) {
+        alert("회원가입이 완료되었습니다.");
+        console.log('create firstStep에 저장 성공');
       }
     } catch (error) {
-      console.log('Error updating field:', error);
+      alert("회원가입이 불가합니다. 이미 가입한 아이디이거나 입력한 값이 잘못되었습니다.");
+      console.error('create firstStep에 저장 실패', error);
     }
   }
+  
+
 
   async function fetchData() { // firebase Update : 함수 원하는 collection 안에 원하는 doc 안에 내용을 읽어올 때 사용한다.
     const docRef = doc(dbService, "ID_ALL", "id");

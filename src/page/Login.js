@@ -31,7 +31,8 @@ function Login() {
         console.log('로그인 성공:', userCredential.user);
         // 로그인에 성공하면, 사용자를 /register 페이지로 리디렉션합니다.
         alert("로그인 되셨습니다~");
-        window.location.href = "/register";
+        console.log(auth.currentUser.email)
+        //window.location.href = "/register";
       })
       .catch((error) => {
         console.error('로그인 실패:', error);

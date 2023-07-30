@@ -26,7 +26,7 @@ function Survey() {
 
   const checkFieldExistence = async (fieldName) => {
     try {
-      const docRef = doc(dbService, "user", /*auth.currentUser.uid*/'w2bvjO5Eq5vDomiDFx37'); // 문서의 참조를 가져옵니다.
+      const docRef = doc(dbService, "user", auth.currentUser.email); // 문서의 참조를 가져옵니다.
       const docSnap = await getDoc(docRef); // 문서의 스냅샷을 가져옵니다.
       const docData = docSnap.data(); // 문서의 데이터를 가져옵니다.
   
@@ -50,7 +50,7 @@ function Survey() {
   const updateDocument = async (selectedOptions) => {
     try {
       // 해당 유저의 문서를 가져옵니다.
-      const userDocRef = doc(dbService, "user", /*auth.currentUser.uid*/ 'w2bvjO5Eq5vDomiDFx37');
+      const userDocRef = doc(dbService, "user", auth.currentUser.email);
       const userDocSnap = await getDoc(userDocRef);
       const userData = userDocSnap.data();
       
@@ -98,7 +98,7 @@ function Survey() {
     e.preventDefault();
 
     console.log(auth.currentUser.displayName);
-    console.log(auth.currentUser.uid);
+    console.log(auth.currentUser.email);
     updateDocument(selectedOptions);
   };
   
