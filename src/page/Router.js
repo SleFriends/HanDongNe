@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './page/Login';
-import Home from './page/Home';
-import Survey from './page/survey';
-import Review from './page/Review';
-import Register from './page/register';
-import Myposts from './page/myposts'
-import MyPage from './page/mypage';
+import Login from './Login';
+import Home from './Home';
+import Survey from './survey';
+import Review from './Review';
+import Register from './register';
+import Myposts from './myposts'
+import MyPage from './mypage';
 
 const Router = () => {
   return (

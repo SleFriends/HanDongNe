@@ -9,7 +9,7 @@ const Myposts = () => {
       <div className="heads">
         <div className="back">
           <button type="button" className="mypostsbackbutton">
-            <Link to="/Home" style={{ textDecoration: "none", color: "black" }}>Back</Link>
+            <Link to="/Review" style={{ textDecoration: "none", color: "black" }}>Back</Link>
           </button>
         </div>
         <h1 className="secondh1">나의 게시물</h1>
