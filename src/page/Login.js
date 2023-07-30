@@ -3,8 +3,13 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import '../css/Login.css';
 import logo from '../image/logo2.png';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import Register from './register';
+
 import Home from './Home';
+import Survey from './survey';
+import Review from './Review';
+import Register from './register';
+import Myposts from './myposts'
+import MyPage from './mypage';
 
 function Login() {
   const [text1, setText1] = useState('');
@@ -32,6 +37,7 @@ function Login() {
         // 로그인에 성공하면, 사용자를 /Home 페이지로 리디렉션합니다.
         alert("로그인 되셨습니다~");
         // Programmatic navigation to Home page after successful login
+        console.log(auth.currentUser.email);
         window.location.href = "/Home";
       })
       .catch((error) => {
@@ -76,7 +82,12 @@ function Login() {
       </div>
       <Routes>
         <Route path="/Home" element={<Home />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/Review" element={<Review />} />
+        <Route path="/Myposts" element={<Myposts />} />
+        <Route path="/Survey" element={<Survey />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/MyPage" element={<MyPage />} />
       </Routes>
     </Router>
   );

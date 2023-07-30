@@ -4,6 +4,7 @@ import '../css/survey.css'; // Make sure the CSS file path is correct
 import logo from '../image/logo.png';
 import { doc, updateDoc, getDoc } from "firebase/firestore";
 import { auth, dbService } from "../fbase"; // 파이어베이스 앱 초기화 및 데이터베이스 연결 설정을 한 파일
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 function Survey() {
 
@@ -97,10 +98,12 @@ function Survey() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    alert("마이페이지에서 결과를 확인 하세요!")
     console.log(auth.currentUser.displayName);
     console.log(auth.currentUser.email);
     updateDocument(selectedOptions);
   };
+
   
 
 
@@ -217,14 +220,13 @@ function Survey() {
         </div>
         <div className="back-matching">
         <button type="submit" className="backs">
-          Back
+        <Link to="/Home" style={{ textDecoration: "none", color: "black" }}>back</Link>
         </button>
         <button type="submit" className="matching" onClick={handleSubmit}>
-          매칭 시작
+          <Link to="/Home" style={{ textDecoration: "none", color: "black" }}>매칭시작</Link>
         </button>
       </div>
     </div>
-
     </div>
   );
 }

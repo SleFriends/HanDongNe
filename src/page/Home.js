@@ -6,6 +6,10 @@ import map2 from '../image/2.png';
 import map3 from '../image/3.png';
 import map4 from '../image/4.png';
 import map5 from '../image/5.png';
+import { BrowserRouter as Routes, Route, Link } from 'react-router-dom';
+import MyPage from './mypage';
+import Survey from './survey';
+import Review from './Review';
 
 const YourComponent = () => {
   const [imagePositions, setImagePositions] = useState({
@@ -99,18 +103,19 @@ const Home = () => {
             </div>
             <div className='secondline'></div>
             <button type="submit" class='mypage'>
-              마이페이지
+            <Link to="/MyPage" style={{ textDecoration: "none", color: "black" }}>마이페이지</Link>
             </button>
             <button type="submit" class='surveyNmatching'>
-              설문조사 & 매칭
+            <Link to="/Survey" style={{ textDecoration: "none", color: "black" }}>설문조사 & 매칭</Link>
             </button>
             <button type="submit" class='surveydashboard'>
-              후기 게시판
+            <Link to="/Review" style={{ textDecoration: "none", color: "black" }}>후기 게시판</Link>
             </button>
           </div>
         </div>
       </div>
     </div>
+    
   );
 };
 

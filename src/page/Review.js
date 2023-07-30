@@ -9,15 +9,12 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import logo2 from '../image/logo2.png';
 
-
-
 function Review() {
   const [reviews, setReviews] = useState([]);
   const [reviewText, setReviewText] = useState('');
 
   // 리뷰를 저장할 Firestore 컬렉션에 대한 참조
   const reviewsCollection = collection(dbService, 'reviews');
-
 
   useEffect(() => {
     // 컴포넌트가 마운트될 때 Firebase Firestore에서 리뷰를 가져옵니다.
