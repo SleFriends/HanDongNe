@@ -146,7 +146,7 @@ const MyPage = () => {
                       {Jeolla}
                     </a>
                   </p>
-                ) : question1 === 'GW' ? (
+                ) : question1 === 'GG' ? (
                   <p>
                     경기도 <a href={SoeulGyeonggi} target="_blank" rel="noreferrer">
                       {SoeulGyeonggi}

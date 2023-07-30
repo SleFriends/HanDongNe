@@ -58,12 +58,14 @@ function Review() {
       try {
         setUserEmail(auth.currentUser.email);
         // 새로운 리뷰를 Firebase Firestore에 저장합니다.
-        await addDoc(reviewsCollection, {
+        const docRef = await addDoc(reviewsCollection, {
           text: reviewText,
-          timestamp: serverTimestamp(), // Use serverTimestamp to get the current server time
-          email: userEmail, // 작성자의 이메일을 추가하여 함께 저장
-          // Firestore에 필요한 추가 속성이 있다면 더 추가할 수 있습니다.
+          timestamp: serverTimestamp(),
+          email: userEmail,
         });
+        
+        // 추가된 문서의 ID를 확인합니다.
+        console.log("추가된 문서의 ID:", docRef.id);
 
         // Firebase Firestore에서 업데이트된 리뷰를 다시 불러옵니다.
         fetchReviews();

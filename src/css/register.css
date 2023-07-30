@@ -194,15 +194,33 @@ textarea.pwcarea{
 .gmailconnect {
     background-color: red;
     /* 기타 버튼 스타일을 추가로 지정할 수 있습니다. */
+    margin-left: 50px;
+    margin-top: 0px;
+    width:700px;
+    height: 100px;
+    display: flex;
+    align-items: center;
   }
   
   .gmailconnect.confirmed {
     background-color: blue;
+    margin-left: 50px;
+    margin-top: 0px;
+    width:700px;
+    height: 100px;
+    display: flex;
+    align-items: center;
   }
   
   .gmailcheck {
     background-color: red;
     /* 기타 버튼 스타일을 추가로 지정할 수 있습니다. */
+    margin-left: 50px;
+    margin-top: 0px;
+    width:700px;
+    height: 100px;
+    display: flex;
+    align-items: center;
   }
   
   /* register.css */

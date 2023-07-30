@@ -86,7 +86,6 @@ function Login() {
         <Route path="/Review" element={<Review />} />
         <Route path="/Myposts" element={<Myposts />} />
         <Route path="/Survey" element={<Survey />} />
-        <Route path="/Login" element={<Login />} />
         <Route path="/MyPage" element={<MyPage />} />
       </Routes>
     </Router>
