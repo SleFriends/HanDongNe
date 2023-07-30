@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { auth, dbService, collection, addDoc, doc, updateDoc, getDoc, setDoc, getDocs } from '../fbase';
 import '../css/mypage.css'; // 경로 변경
+import { getAuth, updatePassword } from 'firebase/auth';
 import bannerImage from '../image/banner.png'; // 경로 변경
 import { Link } from 'react-router-dom';
 
@@ -90,6 +91,15 @@ const MyPage = () => {
         window.alert('비밀번호는 최소 4자리 이상이어야 합니다.');
         return;
       }
+      const auth = getAuth();
+      const user = auth.currentUser;
+
+      if (!user) {
+        window.alert('사용자 정보를 가져올 수 없습니다.');
+        return;
+      }
+
+      await updatePassword(user, pw);
       // const uid = auth.currentUser.email;
       const userDocRef = doc(dbService, 'user', auth.currentUser.email); 
 
