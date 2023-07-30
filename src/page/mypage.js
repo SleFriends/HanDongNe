@@ -32,7 +32,7 @@ const MyPage = () => {
     const fetchUserData = async () => {
       try {
         // const uid = auth.currentUser.email;
-        const userDocRef = doc(dbService, 'user', 'loy7153@handong.ac.kr');
+        const userDocRef = doc(dbService, 'user', auth.currentUser.email);
         const userDocSnapshot = await getDoc(userDocRef);
         if (userDocSnapshot.exists()) {
           const userData = userDocSnapshot.data();
@@ -91,7 +91,7 @@ const MyPage = () => {
         return;
       }
       // const uid = auth.currentUser.email;
-      const userDocRef = doc(dbService, 'user', 'loy7153@handong.ac.kr'); 
+      const userDocRef = doc(dbService, 'user', auth.currentUser.email); 
 
       // 사용자 비밀번호 업데이트
       await updateDoc(userDocRef, { pw });
