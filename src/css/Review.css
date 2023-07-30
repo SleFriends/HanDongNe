@@ -103,35 +103,90 @@ img.pic{
 .smallbox{
   background-color: #89CFF0;
   display: inline-block;
-  padding :20px;
+  padding-left :20px;
   border-radius: 20px;
   width : 1000px;
   height :110px;
   margin-left: 100px;
   margin-top:18px;
   display:flex;
-  align-items: center;
+  align-items:center;
+
+}
+.smallboxs{
+  background-color: #89CFF0;
+  display: inline-block;
+  padding-left :20px;
+  border-radius: 20px;
+  width : 1000px;
+  height :110px;
+  margin-left: 40px;
+  margin-top:18px;
+  display:flex;
+  align-items:normal;
+
+}
+.reviewtext{
+width: 700px;
+
+margin:auto;
+}
+.information{
+  background-color:#1E90FF;
+  margin-top: 15px;
+  margin-left: 70px;
+  width:200px;
+  height:120px;
+  border-radius: 30px;
+
+  font-size: 10px;
+  font-weight: bold;
+
+  display: block;
+}
+
+.etext{
+  width: 40px;
+  height: 60px;
+margin-top: 50px;
+margin-left: 6px;
+font-size: 16px;
+color: white;
+font-weight: 900;
+}
+
+.times{
+padding-top: 10px;
+width: 130px;
+margin-top: 10px;
+height: 30px;
+
+margin-top: 0px;
 }
 .dividetext{
-  display:flex;
-  align-items: center;
+  display:inline;
+
 }
 .review-text{
-  margin-left: 20px;
-  font-size: 30px;
+display: block;
 }
 .review-textarea{
-  width: 95%;
+  width: 85%;
   height : 80px;
   margin-left: 20px;
-  margin-top: 20px;
+  margin-top: 33px;
   border-radius:20px;
   padding-left:10px;
   padding-top:10px; 
 }
 .buttonflex{
-  display:center;
+display: center;
+margin-left: 830px;
+justify-content: end;
   
+}
+.smallbox form{
+
 }
 .fix{
   margin-top: 90px;

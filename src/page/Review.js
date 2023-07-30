@@ -45,6 +45,7 @@ function Review() {
           id: doc.id,
           text: doc.data().text,
           timestamp: doc.data().timestamp,
+          email: doc.data().email, // 추가: 리뷰의 email 값을 가져옵니다.
         }));
         setReviews(fetchedReviews);
       });
@@ -129,7 +130,7 @@ function Review() {
       <div class='reviews-bigbox'>
         <div class='middlebox'>
           <img class='pic' height={80} src={logo2} style={{marginRight:"px"}}></img>
-          <div class='smallbox'>
+          <div class='smallbox' style={{height:'170px'}}>
             <form onSubmit={handleSubmit}> 
               <textarea
                 className='review-textarea'
@@ -145,13 +146,18 @@ function Review() {
         </div>
 
         {reviews.map((review) => (
-          <div className="middlebox" key={review.id}>
-            <img className="pic" height={80} src={logo2} style={{ marginRight: "px" }}></img>
-            <div className="smallbox">
-              {review.text}
-            </div>
-          </div>
-        ))}
+  <div className="middlebox" key={review.id}>
+    <div className='information'>
+      <div className='etext'>{review.email}</div>
+    </div>
+    <div className="smallboxs">
+      <div className='reviewtext'>{review.text}</div>
+      {review.timestamp && (
+        <div className='times'>{new Date(review.timestamp.toDate()).toLocaleString()}</div>
+      )}
+    </div>
+  </div>
+))}
       </div>
     </div>
   );

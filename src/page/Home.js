@@ -91,7 +91,7 @@ const YourComponent = () => {
 
           <hr style={{width:'300px', marginRight:'0px'}}></hr>
       
-          <div
+          <div //전라도
             onClick={() => alertStateNumber('JL')}
             className="image4"
             style={{ ...imagePositions.image4 ,marginLeft:'90px',marginTop:'0px' }}
@@ -103,7 +103,7 @@ const YourComponent = () => {
         <div className='vertical' style={{backgroundColor:'gray',width:'1px' }} ></div>
 
         <div className='righttwo'>
-          <div
+          <div //강원도
             onClick={() => alertStateNumber('GW')}
             className="image2"
             style={{ ...imagePositions.image2 ,marginLeft:'0px'}}
@@ -113,7 +113,7 @@ const YourComponent = () => {
 
           <hr style={{width:'300px', marginRight:'0px'}}></hr>
 
-          <div
+          <div //경상도
             onClick={() => alertStateNumber('GS')}
             className="image1"
             style={{ ...imagePositions.image1 }}
