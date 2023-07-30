@@ -1,19 +1,19 @@
 // mypage.js
 import React, { useState, useEffect } from 'react';
 import { auth, dbService, collection, addDoc, doc, updateDoc, getDoc, setDoc, getDocs } from '../fbase';
-import '../css/mypage.css'; // 경로 변경
-import bannerImage from '../image/banner.png'; // 경로 변경
+import '../css/mypage.css';
+import bannerImage from '../image/banner.png'; 
 
 const MyPage = () => {
   
   const [id, reviseId] = useState('');
   const [pw, revisePassword] = useState('');  
   const [email, setEmail] = useState('');
-  const [question1, setQuestion1] = useState(''); // 사용자의 답변을 저장할 상태 변수
-  const [question2, setQuestion2] = useState(''); // 사용자의 답변을 저장할 상태 변수
-  const [question3, setQuestion3] = useState(''); // 사용자의 답변을 저장할 상태 변수
-  const [question4, setQuestion4] = useState(''); // 사용자의 답변을 저장할 상태 변수
-  const [question5, setQuestion5] = useState(''); // 사용자의 답변을 저장할 상태 변수
+  const [question1, setQuestion1] = useState(''); 
+  const [question2, setQuestion2] = useState(''); 
+  const [question3, setQuestion3] = useState(''); 
+  const [question4, setQuestion4] = useState('');
+  const [question5, setQuestion5] = useState(''); 
   const [Animal, setRoom3] = useState('');
   const [E, setRoom2_1] = useState('');
   const [I, setRoom2_2] = useState('');
@@ -28,11 +28,10 @@ const MyPage = () => {
   const [isPwEditable, setIsPwEditable] = useState(false);
 
   useEffect(() => {
-    // Fetch user data and matching results from Firebase Firestore
     const fetchUserData = async () => {
       try {
         // const uid = auth.currentUser.email;
-        const userDocRef = doc(dbService, 'user', auth.currentUser.email);
+        const userDocRef = doc(dbService, 'user', 'loy7153@handong.ac.kr');
         const userDocSnapshot = await getDoc(userDocRef);
         if (userDocSnapshot.exists()) {
           const userData = userDocSnapshot.data();
@@ -40,11 +39,11 @@ const MyPage = () => {
           revisePassword(userData.pw);
           setEmail(userData.email);
           prove(userData.school_prove);
-          setQuestion1(userData.question1); // 사용자의 답변을 설정
-          setQuestion2(userData.question2); // 사용자의 답변을 설정
-          setQuestion3(userData.question3); // 사용자의 답변을 설정          
-          setQuestion4(userData.question4); // 사용자의 답변을 설정
-          setQuestion5(userData.question5); // 사용자의 답변을 설정
+          setQuestion1(userData.question1);
+          setQuestion2(userData.question2); 
+          setQuestion3(userData.question3);       
+          setQuestion4(userData.question4); 
+          setQuestion5(userData.question5); 
         }
         const AnimalDocRef = doc(dbService, 'KakaoTalkLink', 'AnimalTalkRoom');
         const AnimalDocSnapshot = await getDoc(AnimalDocRef);
@@ -76,9 +75,6 @@ const MyPage = () => {
         if(workDocSnapshot.exists()){
           setRoom4(workDocSnapshot.data().WorkOut);
         }
-        // const matchingResultsSnapshot = await dbService.collection('KakaoTalkLink').get();
-        // const matchingResultsData = matchingResultsSnapshot.docs.map((doc) => doc.data());
-        // setMatchingResults(matchingResultsData);
       } catch (error) {
         console.error('데이터 가져오기 오류:', error);
       }
@@ -94,10 +90,10 @@ const MyPage = () => {
         return;
       }
       // const uid = auth.currentUser.email;
-      const userDocRef = doc(dbService, 'user', auth.currentUser.email); // dbService의 doc 메서드 사용
+      const userDocRef = doc(dbService, 'user', 'loy7153@handong.ac.kr'); 
 
       // 사용자 비밀번호 업데이트
-      await updateDoc(userDocRef, { pw }); // dbService의 updateDoc 메서드 사용
+      await updateDoc(userDocRef, { pw });
 
       console.log('비밀번호가 업데이트되었습니다:', pw);
       window.alert('마이페이지가 저장되었습니다.');
@@ -106,17 +102,7 @@ const MyPage = () => {
       window.alert('비밀번호가 수정되지 않았습니다.');
     }
   };
-  const newId = (event) => {
-    console.log(event.target.value);
-    reviseId(event.target.value);
-  };
-
-  const newPassword = (event) => {
-    console.log(event.target.value);
-    revisePassword(event.target.value);
-  };
   const handleImageBanner = () => {
-    // Add your desired response when the image is clicked here
     alert('광고 입니다!');
   };
 
