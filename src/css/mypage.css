@@ -2,7 +2,7 @@
 
   .mypage-container {
     width: 100vw;
-    height: 600px;
+    height: 120vh;
     background-color: #1E90FF;
     display: flex;
     align-items: flex-start;
@@ -30,7 +30,7 @@
   
   .rectangle {
     width: 70vw;
-    height: 500px;
+    height: 100vh;
     background-color: white;
     margin-top: 70px;
     display: flex; 
@@ -40,8 +40,8 @@
   .rectangle img {
     text-align: center;
     margin-left: 15vw;
-    max-width: 100%;
-    max-height: 90%;
+    width: 10vw;
+    height: 90vh;
   }
 
   .user-info {
@@ -98,11 +98,6 @@
     margin-bottom: 10px;
   }
 
-  .urls {
-    text-align: center;
-    color: black; 
-    font-size: 18px;
-  }
   .account-email{
     font-size: 20px;
     margin-bottom: 20px;
@@ -110,7 +105,7 @@
 
   .save-button-container {
     text-align: center; 
-    margin-top: 30px; 
+    margin-top: 0px; 
     margin-left: 20vw;
   }
 
@@ -124,4 +119,10 @@
   
   .save-button-container .save-button:hover {
     background-color: #979fa6;
+  }
+  p {
+    margin-left: 20vw;
+    font-size: 16px; /* Change this value to adjust the font size */
+    color: black;
+    text-decoration: none;
   }
