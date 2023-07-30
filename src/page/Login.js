@@ -41,6 +41,7 @@ function Login() {
         window.location.href = "/Home";
       })
       .catch((error) => {
+        alert("아이디 또는 비밀번호를 확인해주세요~");
         console.error('로그인 실패:', error);
       });
   };

@@ -1,6 +1,6 @@
 import '../css/Review.css';
 import { Link } from 'react-router-dom';
-import { serverTimestamp } from 'firebase/firestore';
+import { serverTimestamp, updateDoc , doc, getDoc, setDoc} from 'firebase/firestore';
 import React, { useState, useEffect } from 'react';
 import { auth,dbService, collection, addDoc} from '../fbase';
 import { firebase}  from 'firebase/compat/app';
@@ -63,8 +63,9 @@ function Review() {
           timestamp: serverTimestamp(),
           email: userEmail,
         });
-        
-        // 추가된 문서의 ID를 확인합니다.
+
+        // 추가된 문서의 ID를 확인합니다
+        addReviewToUser(docRef.id);
         console.log("추가된 문서의 ID:", docRef.id);
 
         // Firebase Firestore에서 업데이트된 리뷰를 다시 불러옵니다.
@@ -73,6 +74,31 @@ function Review() {
       } catch (error) {
         console.error('리뷰를 추가하는데 오류 발생: ', error);
       }
+    }
+  };
+
+  const addReviewToUser = async (review) => {
+    try {
+      // 해당 사용자의 문서(Document)를 가져옵니다.
+      const userDocRef = doc(dbService, 'user', auth.currentUser.email);
+      const userDocSnapshot = await getDoc(userDocRef);
+  
+      // 기존의 reviews 배열과 새로운 리뷰(review)를 합칩니다.
+      const existingReviews = userDocSnapshot.data()?.reviews || [];
+      const updatedReviews = [...existingReviews, review];
+  
+      // reviews 필드를 업데이트합니다.
+      await setDoc(
+        userDocRef,
+        {
+          reviews: updatedReviews,
+        },
+        { merge: true } // 기존의 데이터를 덮어쓰지 않고, 새로운 데이터만 업데이트합니다.
+      );
+      
+      console.log('리뷰코드가 유저정보에 성공적으로 추가되었습니다.');
+    } catch (error) {
+      console.error('리뷰코드를 유저정보에 추가하는데 오류 발생:', error);
     }
   };
 

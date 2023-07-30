@@ -271,7 +271,7 @@ function Register() {
                   value={email}
                   onChange={handleInputChange} // Update email input value
                 />
-                <button
+                <button style={{marginLeft:'10px' ,width:'60px'}}
                   type="submit"
                   className={isConfirmed ? "gmailconnect confirmed" : "gmailconnect"}
                   onClick={() => setIsConfirmed(email.endsWith("handong.ac.kr"))} // Check email confirmation
