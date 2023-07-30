@@ -10,6 +10,8 @@ import { BrowserRouter as Routes, Route, Link } from 'react-router-dom';
 import MyPage from './mypage';
 import Survey from './survey';
 import Review from './Review';
+import { doc, getDoc } from 'firebase/firestore';
+import { auth, dbService } from '../fbase';
 
 const YourComponent = () => {
   const [imagePositions, setImagePositions] = useState({
@@ -20,18 +22,57 @@ const YourComponent = () => {
     image5: { wwidth: '280px', height: '150px'},
   });
 
-  const handlePositionChange = (imageId,) => {
-    setImagePositions((prevPositions) => ({
-      ...prevPositions,
-    
-    }));
+  const alertStateNumber = async (State) => {
+    try {
+      const docRef = doc(dbService, "forMap", "State");
+      const docSnapshot = await getDoc(docRef);
+  
+      if (docSnapshot.exists()) {
+        const data = docSnapshot.data();
+  
+        let number;
+        let stateString;
+        switch (State) {
+          case "GG":
+            number = data.GG;
+            stateString = "경기도";
+            break;
+          case "CC":
+            number = data.CC;
+            stateString = "충청도";
+            break;
+          case "GS":
+            number = data.GS;
+            stateString = "경상도";
+            break;
+          case "JL":
+            number = data.JL;
+            stateString = "전라도";
+            break;
+          case "GW":
+            number = data.GW;
+            stateString = "강원도";
+            break;
+          default:
+            alert("해당 State의 number 값을 찾을 수 없습니다.");
+            return;
+        }
+  
+        alert(`${stateString}에는 한동네 친구가 ${number}명 있습니다!`);
+      } else {
+        alert("forMap/State 문서가 존재하지 않습니다.");
+      }
+    } catch (error) {
+      console.error("State의 number 값을 가져오는데 오류 발생:", error);
+      alert("State의 number 값을 가져오는데 오류가 발생했습니다.");
+    }
   };
 
   return (
     <div className="image-container">
         <div className='leftthree'>
           <div //경기도
-            onClick={() => handlePositionChange('image3')}
+            onClick={() => alertStateNumber('GG')}
             className="image3"
             style={{ ...imagePositions.image3 ,marginLeft:'50px'}}
           >
@@ -41,7 +82,7 @@ const YourComponent = () => {
           <hr style={{width:'310px', marginRight:'0px',}}></hr>
 
           <div //충청도
-            onClick={() => handlePositionChange('image5')}
+            onClick={() => alertStateNumber('CC')}
             className="image5"
             style={{ ...imagePositions.image5 ,marginTop:'0px',marginLeft:'80px'}}
           >
@@ -51,7 +92,7 @@ const YourComponent = () => {
           <hr style={{width:'300px', marginRight:'0px'}}></hr>
       
           <div
-            onClick={() => handlePositionChange('image4')}
+            onClick={() => alertStateNumber('JL')}
             className="image4"
             style={{ ...imagePositions.image4 ,marginLeft:'90px',marginTop:'0px' }}
           >
@@ -63,7 +104,7 @@ const YourComponent = () => {
 
         <div className='righttwo'>
           <div
-            onClick={() => handlePositionChange('image2')}
+            onClick={() => alertStateNumber('GW')}
             className="image2"
             style={{ ...imagePositions.image2 ,marginLeft:'0px'}}
           >
@@ -73,7 +114,7 @@ const YourComponent = () => {
           <hr style={{width:'300px', marginRight:'0px'}}></hr>
 
           <div
-            onClick={() => handlePositionChange('image1')}
+            onClick={() => alertStateNumber('GS')}
             className="image1"
             style={{ ...imagePositions.image1 }}
           >
@@ -86,6 +127,8 @@ const YourComponent = () => {
 };
 
 const Home = () => {
+
+
   return (
     <div className="home-background">
       <div className="home-body">
