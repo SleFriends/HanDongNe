@@ -5,8 +5,9 @@ import '../css/mypage.css'; // 경로 변경
 import bannerImage from '../image/banner.png'; // 경로 변경
 
 const MyPage = () => {
+  
   const [id, reviseId] = useState('');
-  const [password, revisePassword] = useState('');  
+  const [pw, revisePassword] = useState('');  
   const [email, setEmail] = useState('');
   const [question1, setQuestion1] = useState(''); // 사용자의 답변을 저장할 상태 변수
   const [question2, setQuestion2] = useState(''); // 사용자의 답변을 저장할 상태 변수
@@ -24,12 +25,13 @@ const MyPage = () => {
   const [SoeulGyeonggi, setRoom1_5] = useState('');
   const [WorkOut, setRoom4] = useState('');
   const [school_prove, prove] = useState('');
+  const [isPwEditable, setIsPwEditable] = useState(false);
 
   useEffect(() => {
     // Fetch user data and matching results from Firebase Firestore
     const fetchUserData = async () => {
       try {
-        // const uid = auth.currentUser.uid;
+        // const uid = auth.currentUser.email;
         const userDocRef = doc(dbService, 'user', '4LYzrGx8Xv2h4EnXHHdj');
         const userDocSnapshot = await getDoc(userDocRef);
         if (userDocSnapshot.exists()) {
@@ -84,39 +86,20 @@ const MyPage = () => {
 
     fetchUserData();
   }, []);
-  const handleIdUpdate = async () => {
-    try {
-      if (id.length < 4) {
-        window.alert('아이디는 최소 4자리 이상이어야 합니다.');
-        return;
-      }
-      // const uid = auth.currentUser.uid;
-      const userDocRef = doc(dbService, 'user', auth.currentUser.email);
-
-      // 사용자 아이디 업데이트
-      await updateDoc(userDocRef, { id });
-
-      console.log('아이디가 업데이트되었습니다:', id);
-      window.alert('아이디가 수정되었습니다.');
-    } catch (error) {
-      console.error('아이디 업데이트 오류:', error);
-      window.alert('아이디가 수정되지 않았습니다.');
-    }
-  };
 
   const handlePasswordUpdate = async () => {
     try {
-      if (password.length < 4) {
+      if (pw.length < 4) {
         window.alert('비밀번호는 최소 4자리 이상이어야 합니다.');
         return;
       }
-      // const uid = auth.currentUser.uid;
-      const userDocRef = doc(dbService, 'user', auth.currentUser.email); // dbService의 doc 메서드 사용
+      // const uid = auth.currentUser.email;
+      const userDocRef = doc(dbService, 'user', '4LYzrGx8Xv2h4EnXHHdj'); // dbService의 doc 메서드 사용
 
       // 사용자 비밀번호 업데이트
-      await updateDoc(userDocRef, { password }); // dbService의 updateDoc 메서드 사용
+      await updateDoc(userDocRef, { pw }); // dbService의 updateDoc 메서드 사용
 
-      console.log('비밀번호가 업데이트되었습니다:', password);
+      console.log('비밀번호가 업데이트되었습니다:', pw);
       window.alert('비밀번호가 수정되었습니다.');
     } catch (error) {
       console.error('비밀번호 업데이트 오류:', error);
@@ -147,45 +130,30 @@ const MyPage = () => {
       <div className="rectangle">
         <div className="user-info">
           <h2>내정보</h2>
-          <div className="account-info">
-            <div>{email}</div>
-            {school_prove && (
-            <div>
-            {school_prove === 'true' ? (
-              <div>학교 인증 완료</div>           
-            ) : (
-              <div>학교 인증 미완료</div>
-            )}
-            </div>
-            )}
-            <div>
-              <textarea
-                className = "account-info-input"
-                type = "text"
-                value = {id}
-                onChange = {newId}
-                placeholder = "아이디">
-                </textarea>
-              <button className="edit-button" onClick={handleIdUpdate}>수정하기</button>
-            </div>
-            <div>
-              <textarea
-                className = "account-info-input"
-                type = "password"
-                value = {password}
-                onChange = {newPassword}
-                placeholder = "비밀번호">
-                </textarea>
-              <button className="edit-button" onClick={handlePasswordUpdate}>수정하기</button>
+          <div className="account-info"><div>아이디</div>
+          <div className = "info-border">{id}</div>
+          <div>
+            <div>비밀번호</div>
+            <textarea
+              className="account-info-input"
+              type="password"
+              value={pw}
+              disabled={!isPwEditable} // Disable the textarea if isPwEditable is false
+              placeholder="비밀번호"
+              onChange={(e) => revisePassword(e.target.value)}
+            />
+            <button className="edit-button" onClick={() => setIsPwEditable((prev) => !prev)}>
+              {isPwEditable ? '수정하기' : '수정하기'}
+            </button>
             </div>
           <div className="account-email">
             <div>이메일</div>
-            <div>{email}</div>
+            <div className="info-border">{email}</div>
           </div>
           </div>
           <div className="matching-result">
           <div>
-          <div>
+          <div>                    
             <h2>매칭 결과 확인</h2>
             {question1 && (
               <div>
@@ -283,7 +251,7 @@ const MyPage = () => {
             </div>
             )}
           <div className="save-button-container">
-            <button className="save-button" onClick = {handlesave}>저장</button>
+            <button className="save-button" onClick={handlePasswordUpdate}>저장</button>
           </div>
         </div>
           </div>       
