@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, dbService } from '../fbase';
-import { collection, query, where, getDocs, updateDoc, doc, deleteDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs, updateDoc, doc, deleteDoc, arrayRemove } from 'firebase/firestore';
 import '../css/Review.css';
 import { Link } from 'react-router-dom';
 
@@ -76,11 +76,19 @@ const Myposts = () => {
     setIsEditing(false); // 수정 완료되었으므로 수정 중인 상태를 해제합니다.
   };
   const handleDeleteClick = async (reviewId) => {
+    const isConfirmed = window.confirm('삭제하시겠습니까?');
+    if (!isConfirmed) {
+      return; // If user cancels the delete action, exit the function
+    }
     try {
       // 리뷰를 삭제하는 함수
       const reviewRef = doc(dbService, 'reviews', reviewId);
       await deleteDoc(reviewRef);
-
+      // Remove the reviewId from the user's "reviews" field in the "user" collection
+      const userDocRef = doc(dbService, 'user', userEmail);
+      await updateDoc(userDocRef, {
+        reviews: arrayRemove(reviewId),
+      });
       // 삭제 후 리뷰 목록을 갱신합니다.
       setReviews((prevReviews) => prevReviews.filter((review) => review.id !== reviewId));
       console.log('리뷰 삭제 성공!');
@@ -143,7 +151,7 @@ const Myposts = () => {
                     className="remove"
                     onClick={() => handleDeleteClick(review.id)}
                     disabled={isEditing} // 수정 중인 경우 비활성화
-                  >                    삭제하기
+                  > 삭제하기
                   </button>
                 </div>
               </div>
