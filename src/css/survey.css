@@ -115,49 +115,100 @@ body {
   
   /* Media query for smaller screens (e.g., mobile phones) */
   @media screen and (max-width: 600px) {
+    .survey-container {
+      /* Set a min-height to fill the screen on TVs */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .surveys-heads {
+      background-color: white;
+      display: flex;
+      align-items: center;
+      height: 100px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+    }
     .surveys-logo {
       margin-bottom: 10px;
-      width: 100px;
-      height: 100px;
+      margin-left: 10px;
+      width: 60px;
+      height: 60px;
     }
   
-    .surveys-name,
+    .surveys-name{
+      margin-left: 0;
+      font-size: 25px;
+      padding-top: 10px;
+      margin-left: 5px;
+      width: 100px;
+      
+    }
     .surveys {
       margin-left: 0;
       font-size: 30px;
       padding-top: 10px;
+      width: 190px;
+
     }
+    .surveys-background {
+      background-color: #1e90ff;
+      position: fixed;
+      top: 100px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow-y: auto;
+    }
+
   
     .surveys-smallbox {
-      margin-left: 20px;
-      width: 90%;
-      height: auto;
+      margin-top: 30px;
+      margin-left: 15px;
+      width: 320px;
+      height: 60px;
       padding: 20px;
     }
   
     .question {
       font-size: 18px;
+      margin-top: 5px;
+      margin-left: 20px;
       width: 100%;
       height: auto;
     }
   
     .option {
-      width: 100%;
+      width: 100px;
+      height: 15px;
+      margin-left: 25px;
     }
-  
+
     .back-matching {
-      padding-top: 50px;
-      flex-direction: column;
-      align-items: center;
+      padding-top: 20px;
+      padding-left: 0px;
+      flex-direction: row;
+      display: flex;
     }
   
     .backs {
-      margin-left: 0;
+      margin-left: 10px;
+      margin-top: 5px;
       margin-bottom: 20px;
+      width: 90px;
+      height: 50px;
     }
   
     .matching {
       margin-left: 0;
+      width: 110px;
+      height: 50px;
+      margin-left: 155px;
+      margin-top: 5px;
+      
     }
   }
   
