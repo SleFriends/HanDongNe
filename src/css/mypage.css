@@ -73,13 +73,11 @@
     margin-left: 0px;
   }
   
-  .account-info > div:nth-child(1),
-  .account-info > div:nth-child(2),
-  .account-info > div:nth-child(5)  {
+  .info-border {
     margin-bottom: 10px;
     border: 1px solid black; 
     padding: 5px; 
-  }
+  } 
 
   .account-info button {
     position: absolute;
