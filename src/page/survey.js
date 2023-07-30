@@ -98,10 +98,11 @@ function Survey() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    alert("마이페이지에서 결과를 확인 하세요!")
     console.log(auth.currentUser.displayName);
     console.log(auth.currentUser.email);
     updateDocument(selectedOptions);
+    alert("마이페이지에서 결과를 확인 하세요!");
+    
   };
 
   
@@ -223,7 +224,7 @@ function Survey() {
         <Link to="/Home" style={{ textDecoration: "none", color: "black" }}>back</Link>
         </button>
         <button type="submit" className="matching" onClick={handleSubmit}>
-          <Link to="/Home" style={{ textDecoration: "none", color: "black" }}>매칭시작</Link>
+         매칭시작
         </button>
       </div>
     </div>

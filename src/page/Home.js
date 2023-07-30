@@ -103,13 +103,13 @@ const Home = () => {
             </div>
             <div className='secondline'></div>
             <button type="submit" class='mypage'>
-            <Link to="/MyPage" style={{ textDecoration: "none", color: "black" }}>마이페이지</Link>
+            <Link to="/MyPage" style={{ textDecoration: "none", color: "white" }}>마이페이지</Link>
             </button>
             <button type="submit" class='surveyNmatching'>
-            <Link to="/Survey" style={{ textDecoration: "none", color: "black" }}>설문조사 & 매칭</Link>
+            <Link to="/Survey" style={{ textDecoration: "none", color: "white" }}>설문조사 & 매칭</Link>
             </button>
             <button type="submit" class='surveydashboard'>
-            <Link to="/Review" style={{ textDecoration: "none", color: "black" }}>후기 게시판</Link>
+            <Link to="/Review" style={{ textDecoration: "none", color: "white" }}>후기 게시판</Link>
             </button>
           </div>
         </div>

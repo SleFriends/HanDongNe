@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { auth, dbService, collection, addDoc, doc, updateDoc, getDoc, setDoc, getDocs } from '../fbase';
 import '../css/mypage.css'; // 경로 변경
 import bannerImage from '../image/banner.png'; // 경로 변경
+import { Link } from 'react-router-dom';
 
 const MyPage = () => {
   
@@ -259,7 +260,9 @@ const MyPage = () => {
         </div>
         <img src={bannerImage} alt="Banner" onClick={handleImageBanner} />
       </div>
-      <button className="back-button">뒤로가기</button>
+      <button className="back-button">
+        <Link to="/Home" style={{textDecoration: "none", color : "black"}}>뒤로가기</Link>
+      </button>
     </div>
   );
 };
